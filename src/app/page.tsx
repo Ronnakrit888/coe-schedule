@@ -1,10 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Stack, Container } from "@mui/material";
+import { Table, Navbar } from "@/shared/components";
 
-import Navbar from "@/shared/components/navbar.component";
-import Table from "@/shared/components/table.component";
-// test test
 export default function Home() {
   return (
     <div

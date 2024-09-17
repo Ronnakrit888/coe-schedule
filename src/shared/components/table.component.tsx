@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Typography } from "@mui/material";
 import styles from "./page.module.css";
+import { morKhor } from "../assets/fonts";
 
-const Table = () => {
+export const Table = () => {
   const times: string[] = [
     "Day/Time",
     "9",
@@ -35,14 +36,22 @@ const Table = () => {
             marginBottom: "24px",
           }}
         >
-          <Typography variant="h3">จัดตารางเรียน</Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              fontFamily: morKhor.style.fontFamily,
+              fontWeight: morKhor.style.fontWeight,
+            }}
+          >
+            จัดตารางเรียน
+          </Typography>
         </div>
 
         {/* Time Slots */}
         <div style={{ display: "block" }}>
           <div>
             <div style={{ width: "100%" }}></div>
-            <div style={{ paddingTop : '20px'}}>
+            <div style={{ paddingTop: "12px" }}>
               <div
                 style={{
                   position: "absolute",
@@ -94,7 +103,12 @@ const Table = () => {
                   <span
                     key={index}
                     className={styles.line}
-                    style={{ left: "-0.5px", top: `${53.5 + (80 * index)}px`, width : '1170px', height : '1px' }}
+                    style={{
+                      left: "-0.5px",
+                      top: `${53.5 + 80 * index}px`,
+                      width: "1170px",
+                      height: "1px",
+                    }}
                   ></span>
                 ))}
               </div>
@@ -106,4 +120,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+
