@@ -46,7 +46,7 @@ const Table = () => {
               <div
                 style={{
                   position: "absolute",
-                  width: "1200px",
+                  width: "1170px",
                   height: "460px",
                 }}
               >
@@ -94,7 +94,7 @@ const Table = () => {
                   <span
                     key={index}
                     className={styles.line}
-                    style={{ left: "-0.5px", top: `${53.5 + (80 * index)}px`, width : '1200px', height : '1px' }}
+                    style={{ left: "-0.5px", top: `${53.5 + (80 * index)}px`, width : '1170px', height : '1px' }}
                   ></span>
                 ))}
               </div>
