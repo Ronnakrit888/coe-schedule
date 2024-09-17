@@ -1,0 +1,14 @@
+.line {
+    position: absolute;
+    background-color: rgb(227, 229, 248);
+  }
+
+.timeHeader {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(250, 250, 255);
+    text-align: center;
+    padding-top: 0.125rem;
+}
