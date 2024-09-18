@@ -115,9 +115,25 @@ export const Table = () => {
             </div>
           </div>
         </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            marginTop: "24px",
+            marginBottom: "24px",
+          }}
+        >
+          <div style={{ display: "flex" }}>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontFamily: morKhor.style.fontFamily }}
+            >
+              หน่วยกิตในตาราง
+            </Typography>
+          </div>
+        </div>
       </div>
     </Container>
   );
 };
-
-

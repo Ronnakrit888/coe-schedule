@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { morKhor } from "@/shared/assets/fonts";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
