@@ -1,7 +1,10 @@
+'use client'
+
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Stack, Container, Typography } from "@mui/material";
-import { Table, Navbar } from "@/shared/components";
+import { Stack, Container } from "@mui/material";
+import { TablePage } from "@/shared/components";
+
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared/redux";
@@ -17,10 +20,7 @@ export default function Home() {
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
-      <Table></Table>
-      <div>
-
-      </div>
+      <TablePage></TablePage>
     </div>
   );
 }

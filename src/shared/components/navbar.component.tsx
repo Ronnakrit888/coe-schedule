@@ -28,7 +28,7 @@ type Props = {
   locale: string;
 }
 
-export const Navbar = (props: Props) => {
+const Navbar = (props: Props) => {
   const { locale } = props;
 
   // Sample text based on locale
@@ -48,13 +48,13 @@ export const Navbar = (props: Props) => {
           {/* Nav Items */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {/* Search Icon and Text */}
-            <Button  href="/testcourses" color="secondary" sx={{ display: 'flex', alignItems: 'center', paddingRight: '20px' }}>
+            <Button  href="/courses" color="secondary" sx={{ display: 'flex', alignItems: 'center', paddingRight: '20px' }}>
               <SearchIcon color="disabled" />
               <Typography sx={{ marginLeft: '8px', color: '#333' }}>{searchText}</Typography>
             </Button>
 
             {/* Schedule Icon and Text */}
-            <Button  href="/src" color="secondary" sx={{ display: 'flex', alignItems: 'center' }}>
+            <Button  href="/" color="secondary" sx={{ display: 'flex', alignItems: 'center' }}>
             <CalendarViewMonthSharpIcon color="disabled" />
               <Typography sx={{ marginLeft: '8px', color: '#333' }}>{navText}</Typography>
             </Button>
@@ -64,3 +64,5 @@ export const Navbar = (props: Props) => {
     </AppBar>
   )
 }
+
+export default Navbar
