@@ -27,15 +27,15 @@ const page = (props: Props) => {
       <Modal
         open={showModal}
         onClose={closeModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="subject-name"
+        aria-describedby="subject-describe"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography id="subject-name" variant="h6" component="h2">
+            0201107 LRN STUD ACT
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          <Typography id="subject-describe" sx={{ mt: 2 }}>
+            การเรียนรู้ผ่านกิจกรรมนิสิต
           </Typography>
         </Box>
       </Modal>
