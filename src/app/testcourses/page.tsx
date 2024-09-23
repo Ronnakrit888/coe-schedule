@@ -28,28 +28,51 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Courses: React.FC = () => {
+// Component สำหรับแสดงรายละเอียดของ course ที่เลือก
+const CourseDetails: React.FC<{ course: Course }> = ({ course }) => {
+  // รวมวันเรียนทั้งหมดจาก schedule ของแต่ละ section
+  const studyDays = course.sections.flatMap(section =>
+    section.schedule.map(schedule => schedule.day_of_week)
+  );
+
+  // เอาค่าที่ไม่ซ้ำกันและจัดเรียง
+  const uniqueStudyDays = Array.from(new Set(studyDays)).join(', ');
+
+  return (
+    <Card variant="outlined" sx={{ mt: 4 }}>
+      <CardContent>
+        <Typography variant="h6">
+          {course.course_code} - {course.course_name_english}
+        </Typography>
+        <Typography variant="body1">
+          <strong>Credits:</strong> {course.credits}
+        </Typography>
+        <Typography variant="body1">
+          <strong>วันเรียน:</strong> {uniqueStudyDays || 'N/A'}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
+
+const Courses = () => {
   const [courses] = useState<Course[]>(CourseMock);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [courseToSelect, setCourseToSelect] = useState<Course | null>(null);
 
-  // Filter courses based on search term
   const filteredCourses = useMemo(() => {
     return courses.filter(course =>
       course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_id.toString().includes(searchTerm)
+      course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [courses, searchTerm]);
 
-  // Update search term
   const handleSearchChange = (_: React.SyntheticEvent, value: string) => {
     setSearchTerm(value);
   };
 
-  // Handle course selection
   const handleCourseSelect = (
     event: React.SyntheticEvent,
     value: string | Course | null,
@@ -57,19 +80,17 @@ const Courses: React.FC = () => {
     details?: AutocompleteChangeDetails<string | Course>
   ) => {
     if (typeof value === 'object' && value !== null) {
-      setSelectedCourse(value); // If a course is selected, set it
-      setCourseToSelect(null); // Clear any previously selected course
+      setSelectedCourse(value);
+      setCourseToSelect(null);
     } else {
-      setSelectedCourse(null); // Clear the course if none is selected
+      setSelectedCourse(null);
     }
   };
 
-  // Handle section selection
   const handleSectionChange = (event: SelectChangeEvent<number>) => {
     setSelectedSection(Number(event.target.value));
   };
 
-  // Handle course confirmation
   const handleSelectCourse = () => {
     if (selectedCourse) {
       setCourseToSelect(selectedCourse);
@@ -77,17 +98,19 @@ const Courses: React.FC = () => {
     }
   };
 
+  const selectedSectionDetails = selectedCourse?.sections.find(sec => sec.section === selectedSection);
+
   return (
     <Container>
       <Stack sx={{ mt: 4 }}>
         <Autocomplete
           freeSolo
-          options={filteredCourses as (Course | string)[]}
+          options={filteredCourses as Array<Course | string>}
           getOptionLabel={(option: string | Course) =>
             typeof option === 'string' ? option : `${option.course_code} - ${option.course_name_english}`
           }
           onInputChange={handleSearchChange}
-          onChange={handleCourseSelect}  // Updated to accept the correct parameters
+          onChange={handleCourseSelect}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -116,10 +139,12 @@ const Courses: React.FC = () => {
               <strong>Credits:</strong> {selectedCourse.credits}
             </Typography>
             <Typography variant="body1">
-              <strong>วันเรียน:</strong> {selectedCourse.study_days?.join(', ') || 'N/A'}
+              <strong>วันเรียน:</strong> {selectedCourse.sections.flatMap(section =>
+                section.schedule.map(schedule => schedule.day_of_week)
+              ).filter((value, index, self) => self.indexOf(value) === index).join(', ') || 'N/A'}
             </Typography>
 
-            {selectedCourse.sections && selectedCourse.sections.length > 0 && (
+            {selectedCourse.sections.length > 0 && (
               <Box sx={{ mt: 2 }}>
                 <FormControl fullWidth>
                   <InputLabel>Sec</InputLabel>
@@ -134,20 +159,16 @@ const Courses: React.FC = () => {
               </Box>
             )}
 
-            {selectedSection !== null && selectedCourse.sections && (
+            {selectedSectionDetails && (
               <Table sx={{ mt: 2 }}>
                 <TableBody>
-                  {selectedCourse.sections
-                    .find((sec) => sec.section === selectedSection)
-                    ?.schedule.map((schedule, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{schedule.day_of_week}</TableCell>
-                        <TableCell>{schedule.start_time} - {schedule.end_time}</TableCell>
-                        <TableCell>{schedule.room_name}</TableCell>
-                        <TableCell>{schedule.building_name}</TableCell>
-                        <TableCell>{schedule.study_type}</TableCell>
-                      </TableRow>
-                    ))}
+                  {selectedSectionDetails.schedule.map((schedule, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{schedule.day_of_week}</TableCell>
+                      <TableCell>{schedule.start_time} - {schedule.end_time}</TableCell>
+                      <TableCell>{schedule.room_name}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             )}
@@ -166,21 +187,7 @@ const Courses: React.FC = () => {
         </Card>
       )}
 
-      {courseToSelect && (
-        <Card variant="outlined" sx={{ mt: 4 }}>
-          <CardContent>
-            <Typography variant="h6">
-              วิชาที่เลือก: {courseToSelect.course_code} - {courseToSelect.course_name_english}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Credits:</strong> {courseToSelect.credits}
-            </Typography>
-            <Typography variant="body1">
-              <strong>วันเรียน:</strong> {courseToSelect.study_days?.join(', ') || 'N/A'}
-            </Typography>
-          </CardContent>
-        </Card>
-      )}
+      {courseToSelect && <CourseDetails course={courseToSelect} />}
     </Container>
   );
 };
