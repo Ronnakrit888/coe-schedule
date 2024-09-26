@@ -12,4 +12,20 @@ export default function Home() {
     </div>
   );
 }
+
+
+
 //test by nateeeeee
+// export default function Home() {
+//   return (
+//     <div
+//       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+//     >
+//       <Navbar locale="en" /> {/* Pass in the appropriate locale */}
+
+//       <Container sx={{ flexGrow: 1 }}> {/* Optional container for layout */}
+//         <Table />
+//       </Container>
+//     </div>
+//   );
+// }
