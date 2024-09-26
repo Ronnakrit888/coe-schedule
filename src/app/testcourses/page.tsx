@@ -39,15 +39,15 @@ const Courses = (props: Props) => {
   // Filter courses based on search term
   const filteredCourses = useMemo(() => {
     return courses.filter(course =>
-      course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) 
       course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [courses, searchTerm]);
-
+  
   const handleSearchChange = (_: React.SyntheticEvent, value: string) => {
     setSearchTerm(value);
   };
-
+  
   const handleCourseSelect = (event: React.SyntheticEvent, value: string | Course | null) => {
     if (typeof value === 'object' && value !== null) {
       setSelectedCourse(value);
@@ -97,6 +97,7 @@ const Courses = (props: Props) => {
         />
 
         {/* Message if no course found */}
+
         {filteredCourses.length === 0 && !selectedCourse && (
           <Typography variant="body1" color="textSecondary">
             ไม่พบวิชาที่คุณค้นหา
@@ -170,7 +171,6 @@ const Courses = (props: Props) => {
                     ))}
                   </Select>
                 </FormControl>
-
                 <Button
                   variant="contained"
                   color="primary"

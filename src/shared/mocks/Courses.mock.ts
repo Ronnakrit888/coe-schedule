@@ -1357,7 +1357,6 @@ export const CourseMock: Course[] = [
         ]
     },
     {
-        "course_id": 3613658100,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814999",
@@ -1792,7 +1791,6 @@ export const CourseMock: Course[] = [
     },
     {
         "course_id": 0,
-
         "academic_year": 2567,
         "semester": 1,
         "course_code": "LI101001",
@@ -1914,6 +1912,14 @@ export const CourseMock: Course[] = [
         "academic_year": 2567,
         "semester": 1,
         "course_code": "LI102003",
+        "prerequisite": "LI101001"
+    },
+    {
+        "course_id": 0,
+        "faculty_id": 4,
+        "academic_year": 2567,
+        "semester": 1,
+        "course_code": "LI101003",
         "course_name": "ภาษาอังกฤษ 3",
         "course_name_english": "ENGLISH III",
         "faculty_name": "สถาบันภาษา",
