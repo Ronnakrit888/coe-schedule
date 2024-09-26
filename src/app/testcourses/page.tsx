@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Course, Section } from '@/shared/interfaces';
 import { CourseMock } from '@/shared/mocks';
 import {
@@ -23,71 +23,68 @@ import {
   Autocomplete,
   TextField,
   SelectChangeEvent,
-  AutocompleteChangeReason,
-  AutocompleteChangeDetails,
+  Chip,
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Courses: React.FC = () => {
+type Props = {};
+
+const Courses = (props: Props) => {
   const [courses] = useState<Course[]>(CourseMock);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [courseToSelect, setCourseToSelect] = useState<Course | null>(null);
+  const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
 
   // Filter courses based on search term
   const filteredCourses = useMemo(() => {
     return courses.filter(course =>
-      course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_id.toString().includes(searchTerm)
+      course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) 
+      course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [courses, searchTerm]);
-
-  // Update search term
+  
   const handleSearchChange = (_: React.SyntheticEvent, value: string) => {
     setSearchTerm(value);
   };
-
-  // Handle course selection
-  const handleCourseSelect = (
-    event: React.SyntheticEvent,
-    value: string | Course | null,
-    reason: AutocompleteChangeReason,
-    details?: AutocompleteChangeDetails<string | Course>
-  ) => {
+  
+  const handleCourseSelect = (event: React.SyntheticEvent, value: string | Course | null) => {
     if (typeof value === 'object' && value !== null) {
-      setSelectedCourse(value); // If a course is selected, set it
-      setCourseToSelect(null); // Clear any previously selected course
+      setSelectedCourse(value);
+      setSelectedSection(null); // Reset section when selecting a new course
     } else {
-      setSelectedCourse(null); // Clear the course if none is selected
+      setSelectedCourse(null);
     }
   };
 
-  // Handle section selection
   const handleSectionChange = (event: SelectChangeEvent<number>) => {
     setSelectedSection(Number(event.target.value));
   };
 
-  // Handle course confirmation
   const handleSelectCourse = () => {
-    if (selectedCourse) {
-      setCourseToSelect(selectedCourse);
-      setSelectedSection(null);
+    if (selectedCourse && !selectedCourses.some(course => course.course_id === selectedCourse.course_id)) {
+      setSelectedCourses([...selectedCourses, selectedCourse]);
     }
   };
 
+  useEffect(() => {
+    if(selectedCourses){console.log(selectedCourses);}
+  }, [selectedCourses]);
+
+  const selectedSectionDetails = selectedCourse?.sections.find(sec => sec.section === selectedSection);
+
   return (
     <Container>
+      {/* Course Search and Selection */}
       <Stack sx={{ mt: 4 }}>
         <Autocomplete
           freeSolo
-          options={filteredCourses as (Course | string)[]}
+          options={filteredCourses as Array<Course | string>}
           getOptionLabel={(option: string | Course) =>
             typeof option === 'string' ? option : `${option.course_code} - ${option.course_name_english}`
           }
           onInputChange={handleSearchChange}
-          onChange={handleCourseSelect}  // Updated to accept the correct parameters
+          onChange={handleCourseSelect}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -99,6 +96,8 @@ const Courses: React.FC = () => {
           )}
         />
 
+        {/* Message if no course found */}
+
         {filteredCourses.length === 0 && !selectedCourse && (
           <Typography variant="body1" color="textSecondary">
             ไม่พบวิชาที่คุณค้นหา
@@ -106,24 +105,65 @@ const Courses: React.FC = () => {
         )}
       </Stack>
 
+      {/* Selected Course Details */}
       {selectedCourse && (
         <Card variant="outlined" sx={{ mt: 4 }}>
           <CardContent>
-            <Typography variant="h6">
-              {selectedCourse.course_code} - {selectedCourse.course_name_english}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Credits:</strong> {selectedCourse.credits}
-            </Typography>
-            <Typography variant="body1">
-              <strong>วันเรียน:</strong> {selectedCourse.study_days?.join(', ') || 'N/A'}
-            </Typography>
+            <Grid container spacing={2}>
+              {/* Left side: Course details */}
+              <Grid item xs={8}>
+                <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+                  {selectedCourse.course_code} {selectedCourse.course_name_english}
+                </Typography>
+                {/* <Typography variant="subtitle1" sx={{ color: 'textSecondary', mb: 2 }}>
+                  {selectedCourse.credits} หน่วยกิต
+                </Typography> */}
+                <Chip label={selectedCourse.credits} color="default" variant="outlined" />
+                
+                {/* Days of Study */}
+                <Box sx={{ mt: 2 }}>
+                <Typography sx={{ mb: 1}}>
+                  วันที่เรียน
+                </Typography>
+                  {selectedCourse.sections.flatMap(section =>
+                    section.schedule.map(schedule => (
+                      <Chip
+                        key={schedule.day_of_week}
+                        label={schedule.day_of_week}
+                        sx={{ mr: 1 }}
+                        color={schedule.day_of_week === 'WED' ? 'success' : 'warning'}
+                      />
+                    ))
+                  )}
+                </Box>
 
-            {selectedCourse.sections && selectedCourse.sections.length > 0 && (
-              <Box sx={{ mt: 2 }}>
+                {/* Instructor and Room Schedule Table */}
+                {selectedSectionDetails && (
+                  <Table sx={{ mt: 2 }}>
+                    <TableBody>
+                      {selectedSectionDetails.schedule.map((schedule, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{schedule.day_of_week}</TableCell>
+                          <TableCell>{schedule.start_time} - {schedule.end_time}</TableCell>
+                          <TableCell>{schedule.room_name}</TableCell>
+                          <TableCell>{schedule.study_type}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                )}
+              </Grid>
+
+              {/* Right side: Section selection and button */}
+              <Grid item xs={4} container direction="column" justifyContent="space-between">
                 <FormControl fullWidth>
-                  <InputLabel>Sec</InputLabel>
-                  <Select value={selectedSection || ''} onChange={handleSectionChange}>
+                  <InputLabel id="sec">Sec</InputLabel>
+                  <Select
+                    labelId="sec"
+                    value={selectedSection || ''}
+                    onChange={handleSectionChange}
+                    label="Sec"
+                  >
                     {selectedCourse.sections.map((section: Section) => (
                       <MenuItem key={section.section} value={section.section}>
                         Sec {section.section}
@@ -131,55 +171,48 @@ const Courses: React.FC = () => {
                     ))}
                   </Select>
                 </FormControl>
-              </Box>
-            )}
-
-            {selectedSection !== null && selectedCourse.sections && (
-              <Table sx={{ mt: 2 }}>
-                <TableBody>
-                  {selectedCourse.sections
-                    .find((sec) => sec.section === selectedSection)
-                    ?.schedule.map((schedule, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{schedule.day_of_week}</TableCell>
-                        <TableCell>{schedule.start_time} - {schedule.end_time}</TableCell>
-                        <TableCell>{schedule.room_name}</TableCell>
-                        <TableCell>{schedule.building_name}</TableCell>
-                        <TableCell>{schedule.study_type}</TableCell>
-                      </TableRow>
-                    ))}
-                </TableBody>
-              </Table>
-            )}
-
-            <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSelectCourse}
-                startIcon={<ExpandMoreIcon />}
-              >
-                เลือก
-              </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSelectCourse}
+                  sx={{ mt: 4 }}
+                  endIcon={<ExpandMoreIcon />}
+                >
+                  เลือก
+                </Button>
+              </Grid>
             </Grid>
           </CardContent>
         </Card>
       )}
 
-      {courseToSelect && (
-        <Card variant="outlined" sx={{ mt: 4 }}>
-          <CardContent>
-            <Typography variant="h6">
-              วิชาที่เลือก: {courseToSelect.course_code} - {courseToSelect.course_name_english}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Credits:</strong> {courseToSelect.credits}
-            </Typography>
-            <Typography variant="body1">
-              <strong>วันเรียน:</strong> {courseToSelect.study_days?.join(', ') || 'N/A'}
-            </Typography>
-          </CardContent>
-        </Card>
+      {/* Display Selected Courses */}
+      {selectedCourses.length > 0 && (
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h6">รายชื่อวิชาที่เลือก</Typography>
+          <Table sx={{ mt: 2 }}>
+            <TableBody>
+              {selectedCourses.map((course, index) => (
+                <TableRow key={index}>
+                  <TableCell>{course.course_code}</TableCell>
+                  <TableCell>{course.course_name_english}</TableCell>
+                  <TableCell>{course.credits}</TableCell>
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => {
+                        setSelectedCourses(selectedCourses.filter(c => c.course_code !== course.course_code));
+                      }}
+                    >
+                      ลบ
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
       )}
     </Container>
   );

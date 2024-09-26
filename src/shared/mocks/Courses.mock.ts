@@ -2,89 +2,87 @@ import { Course } from "../interfaces/";
 
 export const CourseMock: Course[] = [
     {
-        course_id: 3613662058,
-        faculty_id: 4,
-        academic_year: 2567,
-        semester: 1,
-        course_code: "EN812000",
-        course_name: "วิยุตคณิตและพีชคณิตเชิงเส้น",
-        course_name_english: "DISCRETE MATHEMATICS AND LINEAR ALGEBRA",
-        faculty_name: "คณะวิศวกรรมศาสตร์",
-        department_name: "คอมพิวเตอร์",
-        credits: "3 (3-0-6)",
-        prerequisite: "SC401206 หรือ 314126",
-        sections: [
-          {
-            section: 1,
-            level_id: 31,
-            level_name: "ปริญญาตรี ภาคปกติ",
-            level_name_english: "Bachelor Degree",
-            campus_name: "ขอนแก่น",
-            instructors: ["ผศ.ดร.ภัทรวิทย์ พลพินิจ"],
-            reserved_for: [
-              "วิศวกรรมคอมพิวเตอร์ ปี 4 ขึ้นไป",
-              "วิศวกรรมคอมพิวเตอร์ ปี 2 ขึ้นไป"
-            ],
-            reserved_seats: [
-              "20-1-19",
-              "90-69-21"
-            ],
-            total_seats: 90,
-            available_seats: 71,
-            status: "W",
-            midterm: "-",
-            final_exam: "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
-            remarks: "-",
-            is_closed: false,
-            schedule: [
-              {
-                day_of_week: "Tue",
-                start_time: "10:30",
-                end_time: "12:00",
-                wba: false,
-                command: 1,
-                campus_id: 1,
-                campus_name: "ขอนแก่น",
-                room_id: 130,
-                room_name: "EN16606",
-                building_name: "ตึกเพียรวิจิตร",
-                building_code: "EN16",
-                study_type: "C"
-              },
-              {
-                day_of_week: "Thu",
-                start_time: "10:30",
-                end_time: "12:00",
-                wba: false,
-                command: 1,
-                campus_id: 1,
-                campus_name: "ขอนแก่น",
-                room_id: 130,
-                room_name: "EN16606",
-                building_name: "ตึกเพียรวิจิตร",
-                building_code: "EN16",
-                study_type: "C"
-              }
-            ]
-          }
+        "course_id": 3613662058,
+        "academic_year": 2567,
+        "semester": 1,
+        "course_code": "EN812000",
+        "course_name": "วิยุตคณิตและพีชคณิตเชิงเส้น",
+        "course_name_english": "DISCRETE MATHEMATICS AND LINEAR ALGEBRA",
+        "faculty_name": "คณะวิศวกรรมศาสตร์",
+        "department_name": "คอมพิวเตอร์",
+        "credits": "3 (3-0-6)",
+        "prerequisite": "SC401206 หรือ 314126",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ภัทรวิทย์ พลพินิจ"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    }
+                ]
+            }
         ]
-      },
+    },
     {
         "course_id": 3613666209,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN001205",
         "course_name": "การพัฒนาทักษะทางวิศวกรรม",
-        "course_name_english": "Engineering Skills Development",
+        "course_name_english": "ENGINEERING SKILLS DEVELOPMENT",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "1 (0-3-2)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
+                "midterm": "-",
+                "final_exam": "-",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN17204",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 6,
+                "instructors": ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
+                "midterm": "-",
+                "final_exam": "-",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN17204",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613662057,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813002",
@@ -93,11 +91,36 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811300 หรือ 198110 หรือ EN811300 หรือ EN001203 หรือ EN001203 วิชา EN811300 เทียบเท่า EN001203"
+        "prerequisite": "EN811300 หรือ 198110 หรือ EN811300 หรือ EN001203 หรือ EN001203 วิชา EN811300 เทียบเท่า EN001203",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รองศาสตราจารย์วิโรจน์ ทวีปวรเดช"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+
+        ]
     },
+
     {
         "course_id": 3613662059,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN812303",
@@ -106,24 +129,71 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811300 หรือ 198110 หรือ EN811300 หรือ EN001203 หรือ EN001203 วิชา EN811300 เทียบเท่า EN001203"
+        "prerequisite": "EN811300 หรือ 198110 หรือ EN811300 หรือ EN001203 หรือ EN001203 วิชา EN811300 เทียบเท่า EN001203",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.วสุ เชาว์พานนท์"],
+                "midterm": "-",
+                "final_exam": "18 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613666225,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN811300",
         "course_name": "หลักมูลของการเขียนโปรแกรมคอมพิวเตอร์",
-        "course_name_english": "Fundamentals of Computer Programming",
+        "course_name_english": "FUNDAMENTALS OD COMPUTER PROGRAMMING",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ศ.ดร.วนิดา แก่นอากาศ"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN16201-M",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN16201-M",
+                        "study_type": "C"
+                    }
+                ]
+            }
+
+        ]
     },
     {
         "course_id": 3613653468,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN001100",
@@ -132,24 +202,78 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.วิษณุ แทนบุญช่วย",
+                    "ผศ.ดร.วรายุทธ คัมภีราวัฒน์",
+                    "ผศ.ดร.จุฬาภรณ์ เบญจปิยะพร",
+                    "ผศ.ดร.ชนกนันท์ สุขกำเนิด",
+                    "รศ.ดร.พรนภา เกษมศิริ",
+                    "ผศ.ดร.สรอรรถ ธนูศิลป์",
+                    "รศ.ดร.กิตติพงษ์ ลาลุน",
+                    "ผศ.ดร.จงกฤษฏิ์ จงอุดมการณ์",
+                    "อ.ดร.คมกริช จันทรเสนา",
+                    "รศ.ดร.ขนิษฐา คำวิลัยศักดิ์",
+                    "ผศ.ดร.ชวิศ ศรีจันทร์",
+                    "รศ.ดร.เจษฎา โพธิ์สม",
+                    "รศ.ดร.ภูริพงศ์ สุทธิโสภาพันธ์"],
+                "midterm": "-",
+                "final_exam": "18 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN18410",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613666226,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN812100",
         "course_name": "แอนะล็อกอิเล็กทรอนิกส์",
-        "course_name_english": "Analog Electronics",
+        "course_name_english": "ANALOG ELECTRONICS",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811100 หรือ EN811100"
+        "prerequisite": "EN811100 หรือ EN811100",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.นวภัค เอื้ออนันต์",
+                    "ผศ.ดร.ชวิศ ศรีจันทร์",
+                ],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN16606",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
+
     },
     {
         "course_id": 3613669992,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN812101",
@@ -158,11 +282,47 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "COEN812100"
+        "prerequisite": "COEN812100",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ชวิศ ศรีจันทร์",
+                    "ผศ.ดร.ภาณวิชญ์ หาญพินิจศักดิ์"
+                ],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA L:ปฏิบัติ",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.ชวิศ ศรีจันทร์",
+                    "ผศ.ดร.ภาณวิชญ์ หาญพินิจศักดิ์"
+                ],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA L:ปฏิบัติ",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "16:30",
+                        "end_time": "19:30",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
+
     },
     {
         "course_id": 3613661173,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813701",
@@ -171,11 +331,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (2-3-5)",
-        "prerequisite": "EN811301 หรือ EN811301 หรือ 198130 (วิชา EN811301 เทียบเท่าวิชา 198130)"
+        "prerequisite": "EN811301 หรือ EN811301 หรือ 198130 (วิชา EN811301 เทียบเท่าวิชา 198130)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.กานดา สายแก้ว"],
+                "midterm": "-",
+                "final_exam": "16 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN04210",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "14:30",
+                        "end_time": "16:30",
+                        "room_name": "EN04210",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658030,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN812900",
@@ -184,24 +367,96 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.วสุ เชาว์พานนท์",
+                    "ผศ.ดร.จิระเดช พลสวัสดิ์",
+                    "อ.ดร.กิตติ์ เธียรธโนปจัย",
+                    "ผศ.ดร.ภัทรวิทย์ พลพินิจ",
+                    "อ.ดร.วาธิส ลีลาภัทร",
+                    "อ.ดร.นวภัค เอื้ออนันต์",
+                    "ศ.ดร.วนิดา แก่นอากาศ",
+                    "รองศาสตราจารย์วิโรจน์ ทวีปวรเดช",
+                    "ผศ.ดร.วิชชา เฟื่องจันทร์"
+                ],
+                "midterm": "-",
+                "final_exam": "25 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "14:00",
+                        "end_time": "17:00",
+                        "room_name": "EN16301 A",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613653417,
-        "faculty_id": 4,
         "academic_year": 2567,
-        "semester": 1,
+        "semester": 2,
         "course_code": "EN001202",
         "course_name": "การเขียนแบบวิศวกรรม",
         "course_name_english": "ENGINEERING DRAWING",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (2-3-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 5,
+                "instructors": ["รศ.ดร.เขมจิต เสนา"
+                ],
+                "midterm": "16 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "19 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "13:00",
+                        "end_time": "15:00",
+                        "room_name": "EN16301 C",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09.00",
+                        "end_time": "12:00",
+                        "room_name": "EN16301 C",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 6,
+                "instructors": ["ผศ.ดร.ชนกนันท์ สุขกำเนิด"
+                ],
+                "midterm": "16 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "19 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "13:00",
+                        "end_time": "15:00",
+                        "room_name": "EN16301 C",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09.00",
+                        "end_time": "12:00",
+                        "room_name": "EN16301 C",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658038,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813202",
@@ -210,11 +465,35 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812200 หรือ 198220 (วิชา EN812200 เทียบเท่าวิชา 198220,วิชา EN813203 เทียบเท่าวิชา 198321)"
+        "prerequisite": "EN812200 หรือ 198220 (วิชา EN812200 เทียบเท่าวิชา 198220,วิชา EN813203 เทียบเท่าวิชา 198321)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ดารณี หอมดี"
+                ],
+                "midterm": "-",
+                "final_exam": "17 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09.00",
+                        "end_time": "10:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658041,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813203",
@@ -223,11 +502,60 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "COEN813202 หรือ CO198320 (วิชา EN813202 เทียบเท่าวิชา 198320)"
+        "prerequisite": "COEN813202 หรือ CO198320 (วิชา EN813202 เทียบเท่าวิชา 198320)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ดารณี หอมดี"
+                ],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "16:30",
+                        "end_time": "19:30",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["อ.ดร.นวภัค เอื้ออนันต์"
+                ],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "16:30",
+                        "end_time": "19:30",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["รศ.ดร.ธัชพงศ์ กตัญญูกุล"
+                ],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "17.30",
+                        "end_time": "20:30",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658032,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813001",
@@ -236,11 +564,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812000 หรือ 198200 หรือ EN812000 (วิชา EN812000 เทียบเท่าวิชา 198200)"
+        "prerequisite": "EN812000 หรือ 198200 หรือ EN812000 (วิชา EN812000 เทียบเท่าวิชา 198200)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รองศาสตราจารย์พิเชษฐ เชี่ยวธนะกุล"],
+                "midterm": "-",
+                "final_exam": "15 ต.ค. 2567 เวลา 08:30 …คาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658078,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813761",
@@ -249,11 +600,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "เป็นนักศึกษาชั้นปีที่ 3 และต้องได้รับอนุญาตจากภาควิชาฯ ก่อน"
+        "prerequisite": "เป็นนักศึกษาชั้นปีที่ 3 และต้องได้รับอนุญาตจากภาควิชาฯ ก่อน",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.วาธิส ลีลาภัทร", "ผู้ช่วยศาสตราจารย์ภาณุพงษ์ วันจันทึก"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04101",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658043,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813204",
@@ -262,11 +629,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812200 หรือ 198220 (วิชา EN812200 เทียบเท่าวิชา 198220)"
+        "prerequisite": "EN812200 หรือ 198220 (วิชา EN812200 เทียบเท่าวิชา 198220)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.ศรัณย์ ไพศาลศรีสมสุข"],
+                "midterm": "-",
+                "final_exam": "18 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658056,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813400",
@@ -275,11 +665,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812303 หรือ 198232 หรือ EN812303 (วิชา EN812303 เทียบเท่าวิชา 198232)"
+        "prerequisite": "EN812303 หรือ 198232 หรือ EN812303 (วิชา EN812303 เทียบเท่าวิชา 198232)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ชัชชัย คุณบัว"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA L:ปฏิบัติ",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658057,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813401",
@@ -288,11 +701,57 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "COEN813400 หรือ CO198340 (วิชา EN813400 เทียบเท่าวิชา 198340)"
+        "prerequisite": "COEN813400 หรือ CO198340 (วิชา EN813400 เทียบเท่าวิชา 198340)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ชัชชัย คุณบัว", "ผศ.ดร.กรชวัล ชายผา"],
+                "midterm": "-",
+                "final_exam": "24 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04401",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["รศ.ดร.ชัชชัย คุณบัว", "อ.ดร.วสุ เชาว์พานนท์"],
+                "midterm": "-",
+                "final_exam": "24 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04401",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["ผศ.ดร.จิระเดช พลสวัสดิ์"],
+                "midterm": "-",
+                "final_exam": "24 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:30",
+                        "end_time": "20:30",
+                        "room_name": "EN04401",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658045,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813304",
@@ -301,11 +760,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812303 หรือ EN812303 หรือ 198232 (วิชา EN812303 เทียบเท่าวิชา 198232)"
+        "prerequisite": "EN812303 หรือ EN812303 หรือ 198232 (วิชา EN812303 เทียบเท่าวิชา 198232)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.กานดา สายแก้ว"],
+                "midterm": "-",
+                "final_exam": "21 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613653469,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN003102",
@@ -314,11 +796,35 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.รัชพล สันติวรากร", "รศ.ดร.สมชาย ชวนอุดม", "ผศ.ดร.ชนกนันท์ สุขกำเนิด", "อ.รัฐบาล ขันธ์โพธิ์น้อย", "รศ.ดร.ประมินทร์ อาจฤทธิ์", "ผู้ช่วยศาสตราจารย์อนัตต์ เจ่าสกุล", "รศ.ดร.คมกฤช ปิติฤกษ์", "รศ.ดร.อาทิตย์ เนรมิตตกพงศ์", "รศ.ดร.วิษณุ แทนบุญช่วย", "ผศ.ดร.จงกฤษฏิ์ จงอุดมการณ์", "อาจารย์พิเศษ", "อ.ดร.วุฒิพงษ์ กุศลคุ้ม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN18410",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN18410",
+                        "study_type": "C"
+                    }
+                ]
+
+            }
+        ]
     },
     {
         "course_id": 3613658099,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN814998",
@@ -327,11 +833,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "เป็นนักศึกษาชั้นปีที่ 4 และต้องได้รับอนุญาตจากภาควิชาฯ ก่อน"
+        "prerequisite": "เป็นนักศึกษาชั้นปีที่ 4 และต้องได้รับอนุญาตจากภาควิชาฯ ก่อน",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ศ.ดร.วนิดา แก่นอากาศ"],
+                "midterm": "-",
+                "final_exam": "17 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "-",
+                        "start_time": "-",
+                        "end_time": "-",
+                        "room_name": "-",
+                        "study_type": "-"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613653470,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN002101",
@@ -340,11 +862,87 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ปณิธาน พีรพัฒนา", "รศ.ดร.ดนัยพงศ์ เชษฐโชติศักดิ์", "ผศ.ดร.อารีย์ นัยพินิจ", "ผศ.ดร.ภัทรขวัญ พิลางาม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN16501",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["รศ.ดร.ปณิธาน พีรพัฒนา", "รศ.ดร.ดนัยพงศ์ เชษฐโชติศักดิ์", "ผศ.ดร.อารีย์ นัยพินิจ", "ผศ.ดร.ภัทรขวัญ พิลางาม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN16501",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["รศ.ดร.ปณิธาน พีรพัฒนา", "รศ.ดร.ดนัยพงศ์ เชษฐโชติศักดิ์", "ผศ.ดร.อารีย์ นัยพินิจ", "ผศ.ดร.ภัทรขวัญ พิลางาม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "13:00",
+                        "end_time": "16:00",
+                        "room_name": "EN16406",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 4,
+                "instructors": ["รศ.ดร.ปณิธาน พีรพัฒนา", "รศ.ดร.ดนัยพงศ์ เชษฐโชติศักดิ์", "ผศ.ดร.อารีย์ นัยพินิจ", "ผศ.ดร.ภัทรขวัญ พิลางาม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN16501",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 5,
+                "instructors": ["รศ.ดร.ปณิธาน พีรพัฒนา", "รศ.ดร.ดนัยพงศ์ เชษฐโชติศักดิ์", "ผศ.ดร.อารีย์ นัยพินิจ", "ผศ.ดร.ภัทรขวัญ พิลางาม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN16501",
+                        "study_type": "C"
+                    }
+                ]
+            },
+        ]
     },
     {
         "course_id": 3613657457,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN811100",
@@ -353,11 +951,35 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ธัชพงศ์ กตัญญูกุล"],
+                "midterm": "-",
+                "final_exam": "18 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04201",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04201",
+                        "study_type": "C"
+                    }
+                ]
+
+            }
+        ]
     },
     {
         "course_id": 3613662060,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN811301",
@@ -366,11 +988,56 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811300 หรือ 198110 หรือ EN811300"
+        "prerequisite": "EN811300 หรือ 198110 หรือ EN811300",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.กานดา สายแก้ว"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:00",
+                        "end_time": "18:30",
+                        "room_name": "EN04210",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "17:00",
+                        "end_time": "18:30",
+                        "room_name": "EN04210",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.ภัทรวิทย์ พลพินิจ"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "16:00",
+                        "end_time": "17:30",
+                        "room_name": "EN16301 C",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "16:00",
+                        "end_time": "17:30",
+                        "room_name": "EN16301 C",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613657459,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN811302",
@@ -379,11 +1046,42 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "COEN811301 หรือ CO198130 (วิชา EN811301 เทียบเท่าวิชา 198130)"
+        "prerequisite": "COEN811301 หรือ CO198130 (วิชา EN811301 เทียบเท่าวิชา 198130)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ภัทรวิทย์ พลพินิจ", "รศ.ดร.กานดา สายแก้ว"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "16:00",
+                        "room_name": "EN16301 C",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.ภัทรวิทย์ พลพินิจ", "รศ.ดร.กานดา สายแก้ว"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN04210",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613653690,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN812200",
@@ -392,11 +1090,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN211100 หรือ COEN811100 หรือ CO198210 (วิชา EN811100  เทียบเท่าวิชา 198210)"
+        "prerequisite": "EN211100 หรือ COEN811100 หรือ CO198210 (วิชา EN811100  เทียบเท่าวิชา 198210)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ดารณี หอมดี"],
+                "midterm": "-",
+                "final_exam": "20 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658010,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN812201",
@@ -405,11 +1126,57 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "COEN812200 หรือ COEN242107 (วิชา EN812200 เทียบเท่าวิชา  EN242107)"
+        "prerequisite": "COEN812200 หรือ COEN242107 (วิชา EN812200 เทียบเท่าวิชา  EN242107)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ดารณี หอมดี"],
+                "midterm": "-",
+                "final_exam": "21 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "17:00",
+                        "end_time": "20:00",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.ดารณี หอมดี"],
+                "midterm": "-",
+                "final_exam": "21 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:00",
+                        "end_time": "20:00",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["ผศ.ดร.ดารณี หอมดี"],
+                "midterm": "-",
+                "final_exam": "21 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "17:00",
+                        "end_time": "20:00",
+                        "room_name": "EN04310",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658007,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN812102",
@@ -418,11 +1185,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "COEN811100 หรือ CO198210 (วิชา EN811100 เทียบเท่าวิชา 198210)"
+        "prerequisite": "COEN811100 หรือ CO198210 (วิชา EN811100 เทียบเท่าวิชา 198210)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.นวภัค เอื้ออนันต์"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658058,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN813402",
@@ -431,24 +1221,70 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN813001 หรือ CON198343 (วิชา EN813403 เทียบเท่าวิชา 198343)"
+        "prerequisite": "EN813001 หรือ CON198343 (วิชา EN813403 เทียบเท่าวิชา 198343)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รองศาสตราจารย์พิเชษฐ เชี่ยวธนะกุล"],
+                "midterm": "-",
+                "final_exam": "18 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04201",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04201",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613666227,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN813307",
         "course_name": "การคำนวณเชิงอัจฉริยะ",
-        "course_name_english": "Computational Intelligence",
+        "course_name_english": "COMPUTATIONAL INTELLIGENCE",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ศ.ดร.วนิดา แก่นอากาศ"],
+                "midterm": "-",
+                "final_exam": "21 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "42:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658054,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN813305",
@@ -457,11 +1293,35 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812303 หรือ EN812303 หรือ 198232 (วิชา EN812303 เทียบเท่าวิชา 198232)"
+        "prerequisite": "EN812303 หรือ EN812303 หรือ 198232 (วิชา EN812303 เทียบเท่าวิชา 198232)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.กิตติ์ เธียรธโนปจัย"],
+                "midterm": "-",
+                "final_exam": "20 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04201",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04201",
+                        "study_type": "C"
+                    }
+                ]
+
+            }
+        ]
     },
     {
         "course_id": 3613658055,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN813306",
@@ -470,11 +1330,33 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811301 หรือ 198130 หรือ EN811301 (วิชา EN811301 เทียบเท่าวิชา 198130)"
+        "prerequisite": "EN811301 หรือ 198130 หรือ EN811301 (วิชา EN811301 เทียบเท่าวิชา 198130)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.มนัสวี แก่นอำพรพันธ์"],
+                "midterm": "-",
+                "final_exam": "19 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "course_id": 3613658100,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814999",
@@ -483,11 +1365,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "2 (0-6-3)",
-        "prerequisite": "EN814998 หรือ 198498 (วิชา EN814998  เทียบเท่าวิชา 198498)"
+        "prerequisite": "EN814998 หรือ 198498 (วิชา EN814998  เทียบเท่าวิชา 198498)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ศ.ดร.วนิดา แก่นอากาศ"],
+                "midterm": "-",
+                "final_exam": "24 มี.ค. 2568 เวลา 09:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "-",
+                        "start_time": "-",
+                        "end_time": "-",
+                        "room_name": "-",
+                        "study_type": "-"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658077,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813704",
@@ -496,24 +1394,56 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.วิชชา เฟื่องจันทร์"],
+                "midterm": "-",
+                "final_exam": "15 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04210",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613664275,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN813706",
         "course_name": "โครงข่ายประสาทเทียม",
-        "course_name_english": "Artificial Neural Networks",
+        "course_name_english": "ARTIFICIAL NEURAL NETWORKS",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811300 หรือ EN001203 หรือ EN241100 หรือ EN811300 หรือ EN001203 วิชา EN811300 เทียบเท่า EN001203"
+        "prerequisite": "EN811300 หรือ EN001203 หรือ EN241100 หรือ EN811300 หรือ EN001203 วิชา EN811300 เทียบเท่า EN001203",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ธัชพงศ์ กตัญญูกุล"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04111",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658081,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "EN814506",
@@ -522,11 +1452,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN813402 หรือ 198342 (วิชา EN813402 เทียบเท่าวิชา 198342)"
+        "prerequisite": "EN813402 หรือ 198342 (วิชา EN813402 เทียบเท่าวิชา 198342)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.ชวิศ ศรีจันทร์"],
+                "midterm": "-",
+                "final_exam": "เวลา - อาคาร - ห้อง - C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658029,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN812700",
@@ -535,11 +1481,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN811301 และ EN812000 หรือ 198130 และ 198200 หรือ EN811301 และ EN812000 หรือ EN811301 และ EN812000 หรือ EN811301 และ EN812000 (วิชา EN81200 เทียบเท่าวิชา 198200,วิชา EN811301 เทียบเท่าวิชา 198130)"
+        "prerequisite": "EN811301 และ EN812000 หรือ 198130 และ 198200 หรือ EN811301 และ EN812000 หรือ EN811301 และ EN812000 หรือ EN811301 และ EN812000 (วิชา EN81200 เทียบเท่าวิชา 198200,วิชา EN811301 เทียบเท่าวิชา 198130)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.วาธิส ลีลาภัทร"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "16:30",
+                        "end_time": "97:30",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658061,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN813500",
@@ -548,11 +1510,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ศ.ดร.วนิดา แก่นอากาศ"],
+                "midterm": "-",
+                "final_exam": "17 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "13:00",
+                        "end_time": "16:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613661174,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN813702",
@@ -561,11 +1539,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (2-3-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.กานดา สายแก้ว"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "14:30",
+                        "end_time": "16:30",
+                        "room_name": "EN04210",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN04210",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613671176,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814505",
@@ -574,11 +1575,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รองศาสตราจารย์พิเชษฐ เชี่ยวธนะกุล"],
+                "midterm": "-",
+                "final_exam": "20 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613663124,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814508",
@@ -587,11 +1611,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN812000 หรือ EN812000 หรือ 198200 (วิชา EN812000 เทียบเท่าวิชา 198200)"
+        "prerequisite": "EN812000 หรือ EN812000 หรือ 198200 (วิชา EN812000 เทียบเท่าวิชา 198200)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รองศาสตราจารย์พิเชษฐ เชี่ยวธนะกุล"],
+                "midterm": "-",
+                "final_exam": "21 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN04101",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658084,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814608",
@@ -600,11 +1640,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN814607 หรือ 198461 (วิชา EN814607 เทียบเท่าวิชา 198461)"
+        "prerequisite": "EN814607 หรือ 198461 (วิชา EN814607 เทียบเท่าวิชา 198461)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.วาธิส ลีลาภัทร"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN04303",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658087,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814705",
@@ -613,11 +1669,34 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN813306 หรือ 198332 (วิชา EN813306 เทียบเท่าวิชา 198332)"
+        "prerequisite": "EN813306 หรือ 198332 (วิชา EN813306 เทียบเท่าวิชา 198332)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผู้ช่วยศาสตราจารย์อนัตต์ เจ่าสกุล"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658090,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814708",
@@ -626,24 +1705,63 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN813304 หรือ 198330 (วิชา EN813304 เทียบเท่าวิชา 198330)"
+        "prerequisite": "EN813304 หรือ 198330 (วิชา EN813304 เทียบเท่าวิชา 198330)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผู้ช่วยศาสตราจารย์ภาณุพงษ์ วันจันทึก"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "17:30",
+                        "room_name": "EN16201-M",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613668924,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814710",
         "course_name": "การพัฒนาโปรแกรมบนคลาวด์และระบบเครือข่าย",
-        "course_name_english": "Cloud Applications and Networking",
+        "course_name_english": "CLOUND APPLICATIONS AND NETWORKING",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN813400"
+        "prerequisite": "EN813400",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ชัชชัย คุณบัว"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 3613658096,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814805",
@@ -652,11 +1770,27 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "EN813400 หรือ 198340 (วิชา EN813400  เทียบเท่าวิชา 198340)"
+        "prerequisite": "EN813400 หรือ 198340 (วิชา EN813400  เทียบเท่าวิชา 198340)",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผู้ช่วยศาสตราจารย์ธนัญชัย ศิริพงษ์"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "EN04309",
+                        "study_type": "C"
+                    },
+                ]
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "LI101001",
@@ -665,11 +1799,57 @@ export const CourseMock: Course[] = [
         "faculty_name": "สถาบันภาษา",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 111,
+                "instructors": ["อ.ณัฐพล วรรณงาม"],
+                "midterm": "9 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "15 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN16505",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN16505",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 112,
+                "instructors": ["อ.ณัฐพล วรรณงาม"],
+                "midterm": "15 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "22 ส.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN16506",
+                        'study_type': "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN16506",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
+
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "LI101002",
@@ -678,6 +1858,60 @@ export const CourseMock: Course[] = [
         "faculty_name": "สถาบันภาษา",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
+        "prerequisite": "LI101001",
+        "sections": [
+            {
+                "section": 81,
+                "instructors": [""],
+                "midterm": "15 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "17 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 82,
+                "instructors": [""],
+                "midterm": "15 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "17 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    },
+                    {
+
+                        "day_of_week": "WED",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "course_id": 0,
+        "academic_year": 2567,
+        "semester": 1,
+        "course_code": "LI102003",
         "prerequisite": "LI101001"
     },
     {
@@ -691,24 +1925,116 @@ export const CourseMock: Course[] = [
         "faculty_name": "สถาบันภาษา",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
-        "prerequisite": "LI101002"
+        "prerequisite": "LI101002",
+        "sections": [
+            {
+                "section": 26,
+                "instructors": ["อ.จอย เบลลาโด"],
+                "midterm": "9 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "15 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "GL119",
+                        "study_type": "C"
+                    },
+                    {
+
+                        "day_of_week": "WED",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "GL119",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 27,
+                "instructors": ["อ.จอย เบลลาโด"],
+                "midterm": "9 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "15 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN16407",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "EN16407",
+                        "study_type": "C"
+                    }
+
+                ]
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
-        "course_code": "LI101004",
+        "course_code": "LI102004",
         "course_name": "ภาษาอังกฤษ 4",
         "course_name_english": "ENGLISH IV",
         "faculty_name": "สถาบันภาษา",
         "department_name": "- คณะ / ไม่ระบุภาค -",
         "credits": "3 (3-0-6)",
-        "prerequisite": "LI101003"
+        "prerequisite": "LI102003",
+        "sections": [
+            {
+                "section": 78,
+                "instructors": [""],
+                "midterm": "15 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "17 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 79,
+                "instructors": [""],
+                "midterm": "15 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "17 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "SC401206",
@@ -717,11 +2043,60 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, คณิตศาสตร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["อ.ดร.พรพิมล บริวัน", "อ.ดร.เจษฎา เสนาสุข"],
+                "midterm": "5 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "17 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16307",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "EN16307",
+                        "study_type": "C"
+                    }
+
+                ]
+
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.วีณากร เอี่ยวสานุรักษ์", "ผศ.ดร.เสวียน ใจดี"],
+                "midterm": "5 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "17 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC3201",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC3201",
+                        "study_type": "C"
+                    }
+
+                ]
+
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "SC401207",
@@ -730,24 +2105,214 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, คณิตศาสตร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "SC401206"
+        "prerequisite": "SC401206",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.อุดม โชติวรรธกวณิช"],
+                "midterm": "13 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "20 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+
+                ]
+
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.ณาคกฤต ตั้งกาญจนวง"],
+                "midterm": "13 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "20 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC8103",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC8103",
+                        "study_type": "C"
+                    }
+
+                ]
+
+            },
+            {
+                "section": 3,
+                "instructors": ["อ.ดร.เจษฎา เสนาสุข"],
+                "midterm": "13 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "20 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC8105",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC8105",
+                        "study_type": "C"
+                    }
+
+                ]
+
+            },
+            {
+                "section": 4,
+                "instructors": ["อ.ดร.พรพิมล บริวัน"],
+                "midterm": "13 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "20 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC8512",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC8512",
+                        "study_type": "C"
+                    }
+
+                ]
+
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
-        "course_code": "SC40202",
+        "course_code": "SC402202",
         "course_name": "แคลคูลัสสำหรับวิศวกรรมศาสตร์ 3",
         "course_name_english": "CALCULUS FOR ENGINEERING III",
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, คณิตศาสตร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "SC401207"
+        "prerequisite": "SC401207",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["ผศ.ดร.อุดม โชติวรรธกวณิช"],
+                "midterm": "7 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "16 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN16307",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "EN16307",
+                        "study_type": "C"
+                    }
+
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["อ.ดร.สร้างสรรค์ วรัคคกุล"],
+                "midterm": "7 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "16 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC8103",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC8103",
+                        "study_type": "C"
+                    }
+
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["อ.ธีรพล สุคนธ์วิมลมาลย์"],
+                "midterm": "7 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "16 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC8105",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC8105",
+                        "study_type": "C"
+                    }
+
+                ]
+            },
+            {
+                "section": 4,
+                "instructors": ["ภาคคณิตศาสตร์"],
+                "midterm": "7 ส.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "16 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "-",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "-",
+                        "study_type": "C"
+                    }
+
+                ]
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "SC402302",
@@ -756,11 +2321,78 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, คณิตศาสตร์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "SC401207"
+        "prerequisite": "SC401207",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.คณิต มุกดาใส"],
+                "midterm": "16 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "26 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "ห้องพิมล",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "ห้องพิมล",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผศ.ดร.กนกวรรณ ศรีวิมล"],
+                "midterm": "16 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "26 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC1101-ตึกกลม",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC1101-ตึกกลม",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["ผศ.ดร.วริษา นาคพิมพ์"],
+                "midterm": "16 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "26 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC1103-ตึกกลม",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC1103-ตึกกลม",
+                        "study_type": "C"
+                    }
+                ]
+            },
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "SC501005",
@@ -769,11 +2401,122 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, ฟิสิกส์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ธีรศักดิ์ คำวรรณะ"],
+                "midterm": "9 ส.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "18 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "SC5101",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "SC5101",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผู้ช่วยศาสตราจารย์อนุสรณ์ ศรีธีระวิโรจน์"],
+                "midterm": "9 ส.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "18 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "SC5102",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "13:00",
+                        "end_time": "14:30",
+                        "room_name": "SC5102",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["รศ.ดร.วิวัธน์ ยังดี", "รศ.ดร.ธีรศักดิ์ คำวรรณะ"],
+                "midterm": "9 ส.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "18 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "14:30",
+                        "end_time": "16:00",
+                        "room_name": "SC5102",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "WED",
+                        "start_time": "14:30",
+                        "end_time": "16:00",
+                        "room_name": "SC5102",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 4,
+                "instructors": ["รศ.ดร.ธีรศักดิ์ คำวรรณะ"],
+                "midterm": "9 ส.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "18 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "SC8404",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "SC8404",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 5,
+                "instructors": ["รศ.ดร.วิวัธน์ ยังดี", "รศ.ดร.ธีรศักดิ์ คำวรรณะ"],
+                "midterm": "9 ส.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "18 ต.ค. 2567 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "SC8405",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "17:30",
+                        "end_time": "19:00",
+                        "room_name": "SC8405",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "SC501006",
@@ -782,11 +2525,122 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, ฟิสิกส์",
         "credits": "3 (3-0-6)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.วิวัธน์ ยังดี"],
+                "midterm": "14 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "23 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC5102",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC5102",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 2,
+                "instructors": ["ผู้ช่วยศาสตราจารย์อนุสรณ์ ศรีธีระวิโรจน์"],
+                "midterm": "14 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "23 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC3201",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "THU",
+                        "start_time": "09:00",
+                        "end_time": "10:30",
+                        "room_name": "SC3201",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 3,
+                "instructors": ["ผศ.ดร.อธิป เพ็งพัด"],
+                "midterm": "14 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "23 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC3201",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "10:30",
+                        "end_time": "12:00",
+                        "room_name": "SC3201",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 4,
+                "instructors": ["รศ.ดร.วิวัธน์ ยังดี"],
+                "midterm": "14 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "23 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:00",
+                        "end_time": "18:30",
+                        "room_name": "SC8304",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "17:00",
+                        "end_time": "18:30",
+                        "room_name": "SC8304",
+                        "study_type": "C"
+                    }
+                ]
+            },
+            {
+                "section": 5,
+                "instructors": ["ผศ.ดร.อธิป เพ็งพัด"],
+                "midterm": "14 ม.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                "final_exam": "23 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                "schedule": [
+                    {
+                        "day_of_week": "TUE",
+                        "start_time": "17:00",
+                        "end_time": "18:30",
+                        "room_name": "SC8305",
+                        "study_type": "C"
+                    },
+                    {
+                        "day_of_week": "FRI",
+                        "start_time": "17:00",
+                        "end_time": "18:30",
+                        "room_name": "SC8305",
+                        "study_type": "C"
+                    }
+                ]
+            }
+        ]
     },
     {
         "course_id": 0,
-        "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "SC501003",
@@ -795,58 +2649,143 @@ export const CourseMock: Course[] = [
         "faculty_name": "คณะวิทยาศาสตร์",
         "department_name": "คณะวิทยาศาสตร์, ฟิสิกส์",
         "credits": "1 (0-3-2)",
-        "prerequisite": "-"
+        "prerequisite": "-",
+        "sections": [
+            {
+                "section": 1,
+                "instructors": ["รศ.ดร.ชัยพจน์ มุทาพร",
+                    "ผศ.ดร.สมพร ขันเงิน",
+                    "ผศ.ดร.อรรุจี เหมือนวงศ์",
+                    "อ.ดร.นรรฏธวรรณ ประสงค์ธรรม"],
+                "midterm": "-",
+                "final_exam": "",
+                "schedule": [
+                    {
+                        "day_of_week": "MON",
+                        "start_time": "09:00",
+                        "end_time": "12:00",
+                        "room_name": "SC8205",
+                        "study_type": "L"
+                    }
+                ]
+            }
+        ]
     },
-    {
-        "course_id": 0,
-        "faculty_id": 4,
-        "academic_year": 2567,
-        "semester": 2,
-        "course_code": "SC501004",
-        "course_name": "ปฏิบัติการฟิสิกส์ทั่วไป 2",
-        "course_name_english": "GENERAL PHYSICS LABORATORY II",
-        "faculty_name": "คณะวิทยาศาสตร์",
-        "department_name": "คณะวิทยาศาสตร์, ฟิสิกส์",
-        "credits": "1 (0-3-2)",
-        "prerequisite": "-"
-    },
-    {
-        "course_id": 0,
-        "faculty_id": 4,
-        "academic_year": 2567,
-        "semester": 1,
-        "course_code": "GE341511",
-        "course_name": "การคิดเชิงคำนวณและเชิงสถิติสำหรับเอบีซีดี",
-        "course_name_english": "Computational & Statistical Thinking for ABCD",
-        "faculty_name": "สถาบันการสอนวิชาศึกษาทั่วไป",
-        "department_name": "- คณะ / ไม่ระบุภาค -",
-        "credits": "3 (3-0-6)",
-        "prerequisite": "-"
-    },
-    {
-        "course_id": 0,
-        "faculty_id": 4,
-        "academic_year": 2567,
-        "semester": 1,
-        "course_code": "GE362785",
-        "course_name": "การคิดเชิงสร้างสรรค์และการแก้ปัญหา",
-        "course_name_english": "CREATIVE THINKING AND PROBLEM SOLVING",
-        "faculty_name": "สถาบันการสอนวิชาศึกษาทั่วไป",
-        "department_name": "- คณะ / ไม่ระบุภาค -",
-        "credits": "3 (3-0-6)",
-        "prerequisite": "-"
-    },
-    {
-        "course_id": 0,
-        "faculty_id": 4,
-        "academic_year": 2567,
-        "semester": 2,
-        "course_code": "CP001001",
-        "course_name": "เอ บี ซี ดี สำหรับทุกวิชาชีพ",
-        "course_name_english": "ABCD for All Professions",
-        "faculty_name": "วิทยาลัยการคอมพิวเตอร์",
-        "department_name": "วิทยาลัยการคอมพิวเตอร์, ความมั่นคงปลอดภัยไซเบอร์",
-        "credits": "3 (3-0-6)",
-        "prerequisite": "-"
-    }
+        {
+            "course_id": 0,
+            "academic_year": 2567,
+            "semester": 2,
+            "course_code": "SC501004",
+            "course_name": "ปฏิบัติการฟิสิกส์ทั่วไป 2",
+            "course_name_english": "GENERAL PHYSICS LABORATORY II",
+            "faculty_name": "คณะวิทยาศาสตร์",
+            "department_name": "คณะวิทยาศาสตร์, ฟิสิกส์",
+            "credits": "1 (0-3-2)",
+            "prerequisite": "-",
+            "sections": [
+                {
+                    "section": 6,
+                    "instructors": ["รศ.ดร.ชัยพจน์ มุทาพร"],
+                    "midterm": "-",
+                    "final_exam": "25 มี.ค. 2568 เวลา 08:30 - 11:30 อาคาร - ห้อง - L:ปฏิบัติ",
+                    "schedule": [
+                        {
+                            "day_of_week": "FRI",
+                            "start_time": "09:00",
+                            "end_time": "12:00",
+                            "room_name": "SC8205",
+                            "study_type": "L"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "course_id": 0,
+            "academic_year": 2567,
+            "semester": 1,
+            "course_code": "GE341511",
+            "course_name": "การคิดเชิงคำนวณและเชิงสถิติสำหรับเอบีซีดี",
+            "course_name_english": "COMPUTATIONAL & STATISTICAL THINKING FOR ABCD",
+            "faculty_name": "สถาบันการสอนวิชาศึกษาทั่วไป",
+            "department_name": "- คณะ / ไม่ระบุภาค -",
+            "credits": "3 (3-0-6)",
+            "prerequisite": "-",
+            "sections": [
+                {
+                    "section": 79,
+                    "instructors": ["อ.ดร.ศุภโชค สอนศิลพงศ์", "อ.สมาพร กอบุตร"],
+                    "midterm": "-",
+                    "final_exam": "",
+                    "schedule": [
+                        {
+                            "day_of_week": "WED",
+                            "start_time": "09:00",
+                            "end_time": "12:00",
+                            "room_name": "EN18320",
+                            "study_type": "C"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "course_id": 0,
+            "academic_year": 2567,
+            "semester": 1,
+            "course_code": "GE362785",
+            "course_name": "การคิดเชิงสร้างสรรค์และการแก้ปัญหา",
+            "course_name_english": "CREATIVE THINKING AND PROBLEM SOLVING",
+            "faculty_name": "สถาบันการสอนวิชาศึกษาทั่วไป",
+            "department_name": "- คณะ / ไม่ระบุภาค -",
+            "credits": "3 (3-0-6)",
+            "prerequisite": "-",
+            "sections": [
+                {
+                    "section": 20,
+                    "instructors": ["อ.สมาพร กอบุตร"],
+                    "midterm": "-",
+                    "final_exam": "17 ต.ค. 2567 เวลา 08:30 - 11:30 อาคาร - ห้อง WBA C:บรรยาย",
+                    "schedule": [
+                        {
+                            "day_of_week": "TUE",
+                            "start_time": "13:00",
+                            "end_time": "16:00",
+                            "room_name": "EN18307",
+                            "study_type": "C"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "course_id": 0,
+            "academic_year": 2567,
+            "semester": 2,
+            "course_code": "CP001001",
+            "course_name": "เอ บี ซี ดี สำหรับทุกวิชาชีพ",
+            "course_name_english": "ABCD FOR ALL PROFESSIONS",
+            "faculty_name": "วิทยาลัยการคอมพิวเตอร์",
+            "department_name": "วิทยาลัยการคอมพิวเตอร์, ความมั่นคงปลอดภัยไซเบอร์",
+            "credits": "3 (3-0-6)",
+            "prerequisite": "-",
+            "sections": [
+                {
+                    "section": 22,
+                    "instructors": [""],
+                    "midterm": "-",
+                    "final_exam": "29 มี.ค. 2568 เวลา 13:00 - 16:00 อาคาร - ห้อง WBA C:บรรยาย",
+                    "schedule": [
+                        {
+                            "day_of_week": "MON",
+                            "start_time": "13:00",
+                            "end_time": "16:00",
+                            "room_name": "-",
+                            "study_type": "C"
+                        }
+                    ]
+                }
+            ]
+        }
+
 ]

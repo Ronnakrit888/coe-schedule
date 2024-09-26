@@ -12,6 +12,21 @@ export interface Course {
   department_name: string;
   credits: string;
   prerequisite: string;
-  study_days?: string[]; // Add this line to include study_days
-  sections?: Section[];  // Optional, if sections are included
+  sections: Section[];  // Optional, if sections are included
+}
+
+export interface Section {
+  section: number;
+  instructors: string[];  // Array of instructor names
+  midterm: string;
+  final_exam: string;
+  schedule: Schedule[];  // Array of schedule entries for the section
+}
+
+export interface Schedule {
+  day_of_week: string;
+  start_time: string,
+  end_time: string,
+  room_name: string,
+  study_type: string
 }
