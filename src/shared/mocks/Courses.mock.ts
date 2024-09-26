@@ -1357,6 +1357,7 @@ export const CourseMock: Course[] = [
         ]
     },
     {
+        "course_id": 3613658100,
         "academic_year": 2567,
         "semester": 2,
         "course_code": "EN814999",
@@ -1382,7 +1383,7 @@ export const CourseMock: Course[] = [
                     }
                 ]
             }
-        ]
+        ],
     },
     {
         "course_id": 3613658077,
@@ -1907,16 +1908,16 @@ export const CourseMock: Course[] = [
             }
         ]
     },
+    // {
+    //     "course_id": 0,
+    //     "academic_year": 2567,
+    //     "semester": 1,
+    //     "course_code": "LI102003",
+    //     "prerequisite": "LI101001"
+    // },
     {
         "course_id": 0,
-        "academic_year": 2567,
-        "semester": 1,
-        "course_code": "LI102003",
-        "prerequisite": "LI101001"
-    },
-    {
-        "course_id": 0,
-        "faculty_id": 4,
+        // "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,
         "course_code": "LI101003",
