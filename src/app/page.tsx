@@ -9,7 +9,6 @@ export default function Home() {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <Table></Table>
-      <SubjectInfo/>
     </div>
   );
 }
