@@ -21,11 +21,8 @@ export default function Home() {
 //     <div
 //       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
 //     >
-//       <Navbar locale="en" /> {/* Pass in the appropriate locale */}
-
-//       <Container sx={{ flexGrow: 1 }}> {/* Optional container for layout */}
-//         <Table />
-//       </Container>
+//       <Navbar locale={"th"}></Navbar>
+//       <Table></Table>
 //     </div>
 //   );
 // }
