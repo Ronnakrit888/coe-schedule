@@ -7,11 +7,13 @@ export const CoursesSlice = createSlice({
   name: "courseSelected",
   initialState,
   reducers: {
-    addCourse: (state, action: PayloadAction<Course>) => {
-      state.push(action.payload);
+    addCourse: (state, action: PayloadAction<Course | null>) => {
+      if (action.payload != null) {
+        state.push(action.payload);
+      }
     },
 
-    removeCourse: (state, action: PayloadAction<string | number>) => {
+    removeCourse: (state, action: PayloadAction<number>) => {
       return state.filter((course) => course.course_id != action.payload);
     },
 
