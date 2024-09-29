@@ -1,5 +1,8 @@
+import { Section } from "./Section.interface";
+
 export interface Course {
-  course_id: number,
+  course_id: number;
+  // faculty_id: number;
   academic_year: number;
   semester: number;
   course_code: string;

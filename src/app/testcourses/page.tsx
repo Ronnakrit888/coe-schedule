@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from 'react';
-import { Course, Section, Schedule } from '@/shared/interfaces';
-import { CourseMock } from '@/shared/mocks';
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/shared/redux/store";
+import { addCourse, removeCourse } from "@/shared/slices";
+import { Course, Section, Schedule } from "@/shared/interfaces";
+import { CourseMock } from "@/shared/mocks";
 import {
   Container,
   Stack,
@@ -30,30 +33,39 @@ import {
   Paper,
   CardHeader,
 } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 
 const Courses = () => {
   const [courses] = useState<Course[]>(CourseMock);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
+
+  const dispatch = useDispatch();
+  const courses = useSelector((state: RootState) => state.courses);
 
   // Filter courses based on search term
   const filteredCourses = useMemo(() => {
-    return courses.filter(course =>
-      course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
+    return coursesList.filter(
+      (course) =>
+        course.course_name_english
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [courses, searchTerm]);
+  }, [coursesList, searchTerm]);
 
   const handleSearchChange = (_: React.SyntheticEvent, value: string) => {
     setSearchTerm(value);
   };
 
-  const handleCourseSelect = (event: React.SyntheticEvent, value: string | Course | null) => {
-    if (typeof value === 'object' && value !== null) {
+  const handleCourseSelect = (
+    event: React.SyntheticEvent,
+    value: string | Course | null
+  ) => {
+    if (typeof value === "object" && value !== null) {
       setSelectedCourse(value);
       setSelectedSection(null); // Reset section when selecting a new course
     } else {
@@ -66,39 +78,66 @@ const Courses = () => {
   };
 
   const handleSelectCourse = () => {
-    if (selectedCourse && !selectedCourses.some(course => course.course_id === selectedCourse.course_id)) {
+    if (
+      // selectedCourse &&
+      !selectedCourses.some(
+        (course) => course.course_id === selectedCourse!.course_id
+      )
+    ) {
+      dispatch(addCourse(selectedCourse));
       setSelectedCourses([...selectedCourses, selectedCourse]);
     }
+  };
+  
+
+  const handleRemoveCourse = (courseIDToRemove: number) => {
+    dispatch(removeCourse(courseIDToRemove));
+    setSelectedCourses(
+      selectedCourses.filter((course) => course.course_id !== courseIDToRemove)
+    );
   };
 
   useEffect(() => {
     if (selectedCourses) { console.log(selectedCourses); }
   }, [selectedCourses]);
 
-  const selectedSectionDetails = selectedCourse?.sections.find(sec => sec.section === selectedSection);
+  const selectedSectionDetails = selectedCourse?.sections.find(
+    (sec) => sec.section === selectedSection
+  );
 
   return (
-    <Container>
-      {/* Course Search and Selection */}
-      <Stack sx={{ mt: 4 }}>
-        <Autocomplete
-          freeSolo
-          options={filteredCourses as Array<Course | string>}
-          getOptionLabel={(option: string | Course) =>
-            typeof option === 'string' ? option : `${option.course_code} - ${option.course_name_english}`
-          }
-          onInputChange={handleSearchChange}
-          onChange={handleCourseSelect}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="ค้นหารหัสวิชา / ชื่อวิชา"
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 4 }}
-            />
+      <Container>
+        {/* Course Search and Selection */}
+        <Stack sx={{ mt: 4 }}>
+          <Autocomplete
+            freeSolo
+            options={filteredCourses as Array<Course | string>}
+            getOptionLabel={(option: string | Course) =>
+              typeof option === "string"
+                ? option
+                : `${option.course_code} - ${option.course_name_english}`
+            }
+            onInputChange={handleSearchChange}
+            onChange={handleCourseSelect}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="ค้นหารหัสวิชา / ชื่อวิชา"
+                variant="outlined"
+                fullWidth
+                sx={{ mb: 4 }}
+              />
+            )}
+          />
+
+          {/* Message if no course found */}
+
+          {filteredCourses.length === 0 && !selectedCourse && (
+            <Typography variant="body1" color="textSecondary">
+              ไม่พบวิชาที่คุณค้นหา
+            </Typography>
           )}
-        />
+        </Stack>
 
         {/* Message if no course found */}
 
