@@ -1,3 +1,5 @@
+'use client'
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Course, Section } from '../interfaces';

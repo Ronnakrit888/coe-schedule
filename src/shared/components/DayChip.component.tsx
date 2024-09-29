@@ -6,13 +6,16 @@ type Props = {day : string}
 
 const DayChip = (props: Props) => {
     const dayColor = () => {
-        if (props.day === 'MON') return yellow
-        if (props.day === 'TUE') return pink
-        if (props.day === 'WED') return green
-        if (props.day === 'THU') return orange
-        if (props.day === 'FRI') return blue
-        return '#000000' // Default color for other days (Saturday, Sunday)
+      switch (props.day) {
+        case 'MON' : return yellow
+        case 'TUE' : return pink
+        case 'WED' : return green
+        case 'THU' : return orange
+        case 'FRI' : return blue
+        default : return '#000000'
+      }
     }
+    
   return (
     <Chip label={props.day} size="small" sx={{
         bgcolor: dayColor()[100],

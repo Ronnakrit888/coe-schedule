@@ -1,4 +1,5 @@
 "use client"
+
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -13,6 +14,7 @@ const Page = (props: Props) => {
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]); // List of selected courses
   const [selectedCourseAndSec, setSelectedCourseAndSec] = useState<[Course, number][]>([]);
   const [snackbarMessage, setSnackbarMessage] = useState('');
+
   const filteredCourse = useMemo(() => {
     return CourseMock.filter((course) =>
       (course.course_code + course.course_name_english).toLowerCase().includes(searchCourse.toLowerCase())
@@ -25,6 +27,7 @@ const Page = (props: Props) => {
       prevCourses.filter(item => !(item[0].course_code === course.course_code && item[1] === sec))
     );
   }, []);
+  
   // Function to add course to selected list
   const addSelectedCourseAndSec = useCallback((course: Course, sec: number) => {
     setSelectedCourseAndSec(prevCourses => {

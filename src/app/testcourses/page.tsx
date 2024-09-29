@@ -44,18 +44,18 @@ const Courses = () => {
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
 
   const dispatch = useDispatch();
-  const courses = useSelector((state: RootState) => state.courses);
+  const coursesFromRedux = useSelector((state: RootState) => state.courses);
 
   // Filter courses based on search term
   const filteredCourses = useMemo(() => {
-    return coursesList.filter(
+    return courses.filter(
       (course) =>
         course.course_name_english
           .toLowerCase()
           .includes(searchTerm.toLowerCase()) ||
         course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [coursesList, searchTerm]);
+  }, [courses, searchTerm]);
 
   const handleSearchChange = (_: React.SyntheticEvent, value: string) => {
     setSearchTerm(value);
@@ -138,16 +138,6 @@ const Courses = () => {
             </Typography>
           )}
         </Stack>
-
-        {/* Message if no course found */}
-
-        {filteredCourses.length === 0 && !selectedCourse && (
-          <Typography variant="body1" color="textSecondary">
-            ไม่พบวิชาที่คุณค้นหา
-          </Typography>
-        )}
-      </Stack>
-
       <Stack spacing={4} sx={{ mt: 4 }}>
         {courses.map((course) => (
           <Card key={course.course_id}>
