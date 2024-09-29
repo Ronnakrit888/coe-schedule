@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Stack, Container } from "@mui/material";
+import { Stack, Container, Typography } from "@mui/material";
 import { Table, Navbar } from "@/shared/components";
 
 export default function Home() {

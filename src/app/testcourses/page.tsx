@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
-import { Course, Section } from '@/shared/interfaces';
-import { CourseMock } from '@/shared/mocks';
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/shared/redux/store";
+import { addCourse, removeCourse } from "@/shared/slices";
+import { Course, Section, Schedule } from "@/shared/interfaces";
+import { CourseMock } from "@/shared/mocks";
 import {
   Container,
   Stack,
@@ -23,164 +26,205 @@ import {
   Autocomplete,
   TextField,
   SelectChangeEvent,
-  AutocompleteChangeReason,
-  AutocompleteChangeDetails,
+  Chip,
+  AccordionDetails,
+  AccordionSummary,
+  Accordion,
+  Paper,
+  CardHeader,
 } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const Courses: React.FC = () => {
+
+const Courses = () => {
   const [courses] = useState<Course[]>(CourseMock);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const [courseToSelect, setCourseToSelect] = useState<Course | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
+
+  const dispatch = useDispatch();
+  const coursesFromRedux = useSelector((state: RootState) => state.courses);
 
   // Filter courses based on search term
   const filteredCourses = useMemo(() => {
-    return courses.filter(course =>
-      course.course_name_english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.course_id.toString().includes(searchTerm)
+    return courses.filter(
+      (course) =>
+        course.course_name_english
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        course.course_code.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [courses, searchTerm]);
 
-  // Update search term
   const handleSearchChange = (_: React.SyntheticEvent, value: string) => {
     setSearchTerm(value);
   };
 
-  // Handle course selection
   const handleCourseSelect = (
     event: React.SyntheticEvent,
-    value: string | Course | null,
-    reason: AutocompleteChangeReason,
-    details?: AutocompleteChangeDetails<string | Course>
+    value: string | Course | null
   ) => {
-    if (typeof value === 'object' && value !== null) {
-      setSelectedCourse(value); // If a course is selected, set it
-      setCourseToSelect(null); // Clear any previously selected course
+    if (typeof value === "object" && value !== null) {
+      setSelectedCourse(value);
+      setSelectedSection(null); // Reset section when selecting a new course
     } else {
-      setSelectedCourse(null); // Clear the course if none is selected
+      setSelectedCourse(null);
     }
   };
 
-  // Handle section selection
   const handleSectionChange = (event: SelectChangeEvent<number>) => {
     setSelectedSection(Number(event.target.value));
   };
 
-  // Handle course confirmation
   const handleSelectCourse = () => {
-    if (selectedCourse) {
-      setCourseToSelect(selectedCourse);
-      setSelectedSection(null);
+    if (
+      // selectedCourse &&
+      !selectedCourses.some(
+        (course) => course.course_id === selectedCourse!.course_id
+      )
+    ) {
+      dispatch(addCourse(selectedCourse));
+      setSelectedCourses([...selectedCourses, selectedCourse]);
     }
   };
+  
+
+  const handleRemoveCourse = (courseIDToRemove: number) => {
+    dispatch(removeCourse(courseIDToRemove));
+    setSelectedCourses(
+      selectedCourses.filter((course) => course.course_id !== courseIDToRemove)
+    );
+  };
+
+  useEffect(() => {
+    if (selectedCourses) { console.log(selectedCourses); }
+  }, [selectedCourses]);
+
+  const selectedSectionDetails = selectedCourse?.sections.find(
+    (sec) => sec.section === selectedSection
+  );
 
   return (
-    <Container>
-      <Stack sx={{ mt: 4 }}>
-        <Autocomplete
-          freeSolo
-          options={filteredCourses as (Course | string)[]}
-          getOptionLabel={(option: string | Course) =>
-            typeof option === 'string' ? option : `${option.course_code} - ${option.course_name_english}`
-          }
-          onInputChange={handleSearchChange}
-          onChange={handleCourseSelect}  // Updated to accept the correct parameters
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="ค้นหารหัสวิชา / ชื่อวิชา"
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 4 }}
-            />
+      <Container>
+        {/* Course Search and Selection */}
+        <Stack sx={{ mt: 4 }}>
+          <Autocomplete
+            freeSolo
+            options={filteredCourses as Array<Course | string>}
+            getOptionLabel={(option: string | Course) =>
+              typeof option === "string"
+                ? option
+                : `${option.course_code} - ${option.course_name_english}`
+            }
+            onInputChange={handleSearchChange}
+            onChange={handleCourseSelect}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="ค้นหารหัสวิชา / ชื่อวิชา"
+                variant="outlined"
+                fullWidth
+                sx={{ mb: 4 }}
+              />
+            )}
+          />
+
+          {/* Message if no course found */}
+
+          {filteredCourses.length === 0 && !selectedCourse && (
+            <Typography variant="body1" color="textSecondary">
+              ไม่พบวิชาที่คุณค้นหา
+            </Typography>
           )}
-        />
+        </Stack>
+      <Stack spacing={4} sx={{ mt: 4 }}>
+        {courses.map((course) => (
+          <Card key={course.course_id}>
+            <CardHeader title={course.course_code + " " + course.course_name_english} subheader={course.credits} />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary">
+                หน่วยกิต: {course.credits}
+              </Typography>
 
-        {filteredCourses.length === 0 && !selectedCourse && (
-          <Typography variant="body1" color="textSecondary">
-            ไม่พบวิชาที่คุณค้นหา
-          </Typography>
-        )}
-      </Stack>
+              {course.sections.map((section) => (
+                <Box key={section.section} sx={{ mt: 2 }}>
+                  <Stack spacing={2}>
 
-      {selectedCourse && (
-        <Card variant="outlined" sx={{ mt: 4 }}>
-          <CardContent>
-            <Typography variant="h6">
-              {selectedCourse.course_code} - {selectedCourse.course_name_english}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Credits:</strong> {selectedCourse.credits}
-            </Typography>
-            <Typography variant="body1">
-              <strong>วันเรียน:</strong> {selectedCourse.study_days?.join(', ') || 'N/A'}
-            </Typography>
+                    <Typography variant="subtitle2">
+                      อาจารย์: {section.instructors.join(', ')}
+                    </Typography>
+                    <Typography variant="subtitle2">
+                      วันสอบกลางภาค: {section.midterm}
+                    </Typography>
+                    <Typography variant="subtitle2">
+                      วันสอบปลายภาค: {section.final_exam}
+                    </Typography>
+                  </Stack>
 
-            {selectedCourse.sections && selectedCourse.sections.length > 0 && (
-              <Box sx={{ mt: 2 }}>
-                <FormControl fullWidth>
-                  <InputLabel>Sec</InputLabel>
-                  <Select value={selectedSection || ''} onChange={handleSectionChange}>
-                    {selectedCourse.sections.map((section: Section) => (
-                      <MenuItem key={section.section} value={section.section}>
-                        Sec {section.section}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Box>
-            )}
+                  <FormControl fullWidth sx={{ mt: 2}}>
+                    <InputLabel id="section-select-label">เลือก Section</InputLabel>
+                    <Select
+                      labelId="section-select-label"
+                      id="section-select"
+                      value={selectedSection || ""}
+                      onChange={handleSectionChange}
+                      displayEmpty
+                    >
+                      <MenuItem value="" disabled>เลือก Section</MenuItem>
+                      {course.sections.map((sec) => (
+                        <MenuItem key={sec.section} value={sec.section}>
+                          Section {sec.section}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
 
-            {selectedSection !== null && selectedCourse.sections && (
-              <Table sx={{ mt: 2 }}>
-                <TableBody>
-                  {selectedCourse.sections
-                    .find((sec) => sec.section === selectedSection)
-                    ?.schedule.map((schedule, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{schedule.day_of_week}</TableCell>
-                        <TableCell>{schedule.start_time} - {schedule.end_time}</TableCell>
-                        <TableCell>{schedule.room_name}</TableCell>
-                        <TableCell>{schedule.building_name}</TableCell>
-                        <TableCell>{schedule.study_type}</TableCell>
-                      </TableRow>
-                    ))}
-                </TableBody>
-              </Table>
-            )}
+                  <Accordion sx={{ mt: 2 }}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls={`panel-${section.section}-content`}
+                      id={`panel-${section.section}-header`}
+                    >
+                      <Typography>รายละเอียดวิชา</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      {section.schedule.map((schedule, index) => (
+                        <Box key={index} sx={{ mt: 1 }}>
+                          <Typography variant="body2">
+                            วันที่เรียน: {schedule.day_of_week}
+                          </Typography>
+                          <Typography variant="body2">
+                            เวลา (Time): {schedule.start_time} - {schedule.end_time}
+                          </Typography>
+                          <Typography variant="body2">
+                            ห้องเรียน (Room): {schedule.room_name}
+                          </Typography>
+                          <Typography variant="body2">
+                            ประเภทการเรียน (Study Type): {schedule.study_type}
+                          </Typography>
+                        </Box>
+                      ))}
+                      <Typography variant="body1" sx={{ mt: 3 }}>
+                        เงื่อนไขรายวิชา: {course.prerequisite}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
 
-            <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSelectCourse}
-                startIcon={<ExpandMoreIcon />}
+                </Box>
+              ))}
+
+              <Button variant="contained" onClick={() => setSelectedCourse(course)}
+                sx={{ mt: 2 }}
               >
                 เลือก
               </Button>
-            </Grid>
-          </CardContent>
-        </Card>
-      )}
+            </CardContent>
+          </Card>
 
-      {courseToSelect && (
-        <Card variant="outlined" sx={{ mt: 4 }}>
-          <CardContent>
-            <Typography variant="h6">
-              วิชาที่เลือก: {courseToSelect.course_code} - {courseToSelect.course_name_english}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Credits:</strong> {courseToSelect.credits}
-            </Typography>
-            <Typography variant="body1">
-              <strong>วันเรียน:</strong> {courseToSelect.study_days?.join(', ') || 'N/A'}
-            </Typography>
-          </CardContent>
-        </Card>
-      )}
+        ))}
+
+      </Stack>
     </Container>
   );
 };
