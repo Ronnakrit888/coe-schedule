@@ -161,7 +161,7 @@ export const CourseMock: Course[] = [
         "semester": 1,
         "course_code": "EN811300",
         "course_name": "หลักมูลของการเขียนโปรแกรมคอมพิวเตอร์",
-        "course_name_english": "FUNDAMENTALS OD COMPUTER PROGRAMMING",
+        "course_name_english": "FUNDAMENTALS OF COMPUTER PROGRAMMING",
         "faculty_name": "คณะวิศวกรรมศาสตร์",
         "department_name": "คอมพิวเตอร์",
         "credits": "3 (3-0-6)",

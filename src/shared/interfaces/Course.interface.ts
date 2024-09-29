@@ -27,3 +27,7 @@ export interface Schedule {
   room_name: string,
   study_type: string
 }
+
+export interface Color {
+  color: string;
+}

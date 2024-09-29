@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { Course, Section } from '@/shared/interfaces';
+import { Course, Section, Schedule } from '@/shared/interfaces';
 import { CourseMock } from '@/shared/mocks';
 import {
   Container,
@@ -24,12 +24,16 @@ import {
   TextField,
   SelectChangeEvent,
   Chip,
+  AccordionDetails,
+  AccordionSummary,
+  Accordion,
+  Paper,
+  CardHeader,
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-type Props = {};
 
-const Courses = (props: Props) => {
+const Courses = () => {
   const [courses] = useState<Course[]>(CourseMock);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
@@ -68,7 +72,7 @@ const Courses = (props: Props) => {
   };
 
   useEffect(() => {
-    if(selectedCourses){console.log(selectedCourses);}
+    if (selectedCourses) { console.log(selectedCourses); }
   }, [selectedCourses]);
 
   const selectedSectionDetails = selectedCourse?.sections.find(sec => sec.section === selectedSection);
@@ -97,6 +101,7 @@ const Courses = (props: Props) => {
         />
 
         {/* Message if no course found */}
+
         {filteredCourses.length === 0 && !selectedCourse && (
           <Typography variant="body1" color="textSecondary">
             ไม่พบวิชาที่คุณค้นหา
@@ -104,116 +109,93 @@ const Courses = (props: Props) => {
         )}
       </Stack>
 
-      {/* Selected Course Details */}
-      {selectedCourse && (
-        <Card variant="outlined" sx={{ mt: 4 }}>
-          <CardContent>
-            <Grid container spacing={2}>
-              {/* Left side: Course details */}
-              <Grid item xs={8}>
-                <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-                  {selectedCourse.course_code} {selectedCourse.course_name_english}
-                </Typography>
-                {/* <Typography variant="subtitle1" sx={{ color: 'textSecondary', mb: 2 }}>
-                  {selectedCourse.credits} หน่วยกิต
-                </Typography> */}
-                <Chip label={selectedCourse.credits} color="default" variant="outlined" />
-                
-                {/* Days of Study */}
-                <Box sx={{ mt: 2 }}>
-                <Typography sx={{ mb: 1}}>
-                  วันที่เรียน
-                </Typography>
-                  {selectedCourse.sections.flatMap(section =>
-                    section.schedule.map(schedule => (
-                      <Chip
-                        key={schedule.day_of_week}
-                        label={schedule.day_of_week}
-                        sx={{ mr: 1 }}
-                        color={schedule.day_of_week === 'WED' ? 'success' : 'warning'}
-                      />
-                    ))
-                  )}
-                </Box>
+      <Stack spacing={4} sx={{ mt: 4 }}>
+        {courses.map((course) => (
+          <Card key={course.course_id}>
+            <CardHeader title={course.course_code + " " + course.course_name_english} subheader={course.credits} />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary">
+                หน่วยกิต: {course.credits}
+              </Typography>
 
-                {/* Instructor and Room Schedule Table */}
-                {selectedSectionDetails && (
-                  <Table sx={{ mt: 2 }}>
-                    <TableBody>
-                      {selectedSectionDetails.schedule.map((schedule, index) => (
-                        <TableRow key={index}>
-                          <TableCell>{schedule.day_of_week}</TableCell>
-                          <TableCell>{schedule.start_time} - {schedule.end_time}</TableCell>
-                          <TableCell>{schedule.room_name}</TableCell>
-                          <TableCell>{schedule.study_type}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                )}
-              </Grid>
+              {course.sections.map((section) => (
+                <Box key={section.section} sx={{ mt: 2 }}>
+                  <Stack spacing={2}>
 
-              {/* Right side: Section selection and button */}
-              <Grid item xs={4} container direction="column" justifyContent="space-between">
-                <FormControl fullWidth>
-                  <InputLabel id="sec">Sec</InputLabel>
-                  <Select
-                    labelId="sec"
-                    value={selectedSection || ''}
-                    onChange={handleSectionChange}
-                    label="Sec"
-                  >
-                    {selectedCourse.sections.map((section: Section) => (
-                      <MenuItem key={section.section} value={section.section}>
-                        Sec {section.section}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
+                    <Typography variant="subtitle2">
+                      อาจารย์: {section.instructors.join(', ')}
+                    </Typography>
+                    <Typography variant="subtitle2">
+                      วันสอบกลางภาค: {section.midterm}
+                    </Typography>
+                    <Typography variant="subtitle2">
+                      วันสอบปลายภาค: {section.final_exam}
+                    </Typography>
+                  </Stack>
 
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSelectCourse}
-                  sx={{ mt: 4 }}
-                  endIcon={<ExpandMoreIcon />}
-                >
-                  เลือก
-                </Button>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Display Selected Courses */}
-      {selectedCourses.length > 0 && (
-        <Box sx={{ mt: 4 }}>
-          <Typography variant="h6">รายชื่อวิชาที่เลือก</Typography>
-          <Table sx={{ mt: 2 }}>
-            <TableBody>
-              {selectedCourses.map((course, index) => (
-                <TableRow key={index}>
-                  <TableCell>{course.course_code}</TableCell>
-                  <TableCell>{course.course_name_english}</TableCell>
-                  <TableCell>{course.credits}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => {
-                        setSelectedCourses(selectedCourses.filter(c => c.course_code !== course.course_code));
-                      }}
+                  <FormControl fullWidth sx={{ mt: 2}}>
+                    <InputLabel id="section-select-label">เลือก Section</InputLabel>
+                    <Select
+                      labelId="section-select-label"
+                      id="section-select"
+                      value={selectedSection || ""}
+                      onChange={handleSectionChange}
+                      displayEmpty
                     >
-                      ลบ
-                    </Button>
-                  </TableCell>
-                </TableRow>
+                      <MenuItem value="" disabled>เลือก Section</MenuItem>
+                      {course.sections.map((sec) => (
+                        <MenuItem key={sec.section} value={sec.section}>
+                          Section {sec.section}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+
+                  <Accordion sx={{ mt: 2 }}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls={`panel-${section.section}-content`}
+                      id={`panel-${section.section}-header`}
+                    >
+                      <Typography>รายละเอียดวิชา</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      {section.schedule.map((schedule, index) => (
+                        <Box key={index} sx={{ mt: 1 }}>
+                          <Typography variant="body2">
+                            วันที่เรียน: {schedule.day_of_week}
+                          </Typography>
+                          <Typography variant="body2">
+                            เวลา (Time): {schedule.start_time} - {schedule.end_time}
+                          </Typography>
+                          <Typography variant="body2">
+                            ห้องเรียน (Room): {schedule.room_name}
+                          </Typography>
+                          <Typography variant="body2">
+                            ประเภทการเรียน (Study Type): {schedule.study_type}
+                          </Typography>
+                        </Box>
+                      ))}
+                      <Typography variant="body1" sx={{ mt: 3 }}>
+                        เงื่อนไขรายวิชา: {course.prerequisite}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+
+                </Box>
               ))}
-            </TableBody>
-          </Table>
-        </Box>
-      )}
+
+              <Button variant="contained" onClick={() => setSelectedCourse(course)}
+                sx={{ mt: 2 }}
+              >
+                เลือก
+              </Button>
+            </CardContent>
+          </Card>
+
+        ))}
+
+      </Stack>
     </Container>
   );
 };
