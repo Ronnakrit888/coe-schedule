@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, store } from "@/shared/redux/store";
+import { RootState } from "@/shared/redux/store";
 import { addCourse, removeCourse } from "@/shared/slices";
 import { Course, Section } from "@/shared/interfaces";
 import { CourseMock } from "@/shared/mocks";
@@ -75,15 +75,16 @@ const Courses = (props: Props) => {
 
   const handleSelectCourse = () => {
     if (
-      selectedCourse &&
+      // selectedCourse &&
       !selectedCourses.some(
-        (course) => course.course_id === selectedCourse.course_id
+        (course) => course.course_id === selectedCourse!.course_id
       )
     ) {
       dispatch(addCourse(selectedCourse));
       setSelectedCourses([...selectedCourses, selectedCourse]);
     }
   };
+  
 
   const handleRemoveCourse = (courseIDToRemove: number) => {
     dispatch(removeCourse(courseIDToRemove));

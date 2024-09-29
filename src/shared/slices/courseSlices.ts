@@ -9,7 +9,8 @@ export const CoursesSlice = createSlice({
   reducers: {
     addCourse: (state, action: PayloadAction<Course | null>) => {
       if (action.payload != null) {
-        state.push(action.payload);
+        // state.push(action.payload);
+        return [...state, action.payload]
       }
     },
 
