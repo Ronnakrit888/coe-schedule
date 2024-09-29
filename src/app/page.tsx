@@ -12,3 +12,17 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+//test by nateeeeee
+// export default function Home() {
+//   return (
+//     <div
+//       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+//     >
+//       <Navbar locale={"th"}></Navbar>
+//       <Table></Table>
+//     </div>
+//   );
+// }
