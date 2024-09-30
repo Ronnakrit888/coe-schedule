@@ -25,10 +25,6 @@ const Navbar = dynamic(
   () => import("../shared/components/navbar.component")
 )
 
-const CourseBox = dynamic(
-  () => import("../shared/components/CourseBox.component")
-);
-
 export default function RootLayout({
   children,
 }: Readonly<{
