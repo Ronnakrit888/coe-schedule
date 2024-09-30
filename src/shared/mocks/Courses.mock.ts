@@ -70,7 +70,7 @@ export const CourseMock: Course[] = [
         ]
       },
     {
-        "course_id": 3613666209,
+        course_id: 3613666209,
         "faculty_id": 4,
         "academic_year": 2567,
         "semester": 1,

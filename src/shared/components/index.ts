@@ -1,2 +1,2 @@
 export * from "./navbar.component";
-export * from "./table.component";
+export * from "./TablePage.component";

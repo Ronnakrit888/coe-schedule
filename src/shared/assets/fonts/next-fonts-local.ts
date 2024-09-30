@@ -19,3 +19,13 @@ export const poppins = localfont({
     ],
     variable: "--font-Poppins",
 });
+
+export const Lamoon = localfont({
+    src: [
+        {
+            path: "./Lamoon.ttf", 
+            weight: '200',
+        },
+    ],
+    variable: "--font-Lamoon",
+});
