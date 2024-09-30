@@ -1,19 +1,33 @@
-'use client'
+"use client";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { Course, Section } from '../interfaces';
-import { Button, Card, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Typography, Paper } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add'; // Import Add icon
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Import CheckCircle icon
-import DayChip from './DayChip.component';
+import React, { useEffect, useState, useMemo, useCallback } from "react";
+import { Course, Section } from "../interfaces";
+import { SelectedCourseAndSec } from "../types";
+import {
+  Button,
+  Card,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+  Paper,
+} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add"; // Import Add icon
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"; // Import CheckCircle icon
+import DayChip from "./DayChip.component";
 
 type Props = {
-  course: Course,
-  addSelectedCourseAndSec: (course: Course, sec: number) => void,
-  selectedCourseAndSec: [Course, number][],
-  totalCredits: () => number,
-  removeSelectedCourseAndSec: (course: Course, sec: number) => void,
+  course: Course;
+  addSelectedCourseAndSec: (selectedCourseAndSec: SelectedCourseAndSec) => void;
+  selectedCourseAndSec: SelectedCourseAndSec[];
+  totalCredits: () => number;
+  removeSelectedCourseAndSec: (
+    selectedCourseAndSec: SelectedCourseAndSec
+  ) => void;
 };
 
 const CourseBox = ({
@@ -41,23 +55,37 @@ const CourseBox = ({
   // Effect for managing course selection/deselection
   useEffect(() => {
     if (secInfo) {
+      const selectedCourseAndSec = { course , section: secInfo.section };
+
       if (courseIsSelect) {
-        addSelectedCourseAndSec(course, secInfo.section);
+        addSelectedCourseAndSec(selectedCourseAndSec);
       } else {
-        removeSelectedCourseAndSec(course, secInfo.section);
+        removeSelectedCourseAndSec(selectedCourseAndSec);
       }
     }
-  }, [courseIsSelect, secInfo, addSelectedCourseAndSec, removeSelectedCourseAndSec, course]);
+  }, [
+    courseIsSelect,
+    secInfo,
+    addSelectedCourseAndSec,
+    removeSelectedCourseAndSec,
+    course,
+  ]);
 
   return (
-    <Paper variant="outlined" sx={{ mt: 2, p: { xs: 2, md: 3 }, borderRadius: 3 }}>
+    <Paper
+      variant="outlined"
+      sx={{ mt: 2, p: { xs: 2, md: 3 }, borderRadius: 3 }}
+    >
       <Grid container spacing={2}>
         {/* Course Title and Credits */}
         <Grid item xs={12} md={8}>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: { xs: '1rem', md: '1.25rem' } }}>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: "bold", fontSize: { xs: "1rem", md: "1.25rem" } }}
+          >
             {course.course_code} {course.course_name_english}
           </Typography>
-          <Typography sx={{ fontWeight: 'bold', color: '#9CA9BA' }}>
+          <Typography sx={{ fontWeight: "bold", color: "#9CA9BA" }}>
             [{course.credits} หน่วยกิต]
           </Typography>
         </Grid>
@@ -66,9 +94,14 @@ const CourseBox = ({
       <Grid container spacing={2} sx={{ mt: 2 }}>
         {/* Study Days */}
         <Grid item xs={12} md={4}>
-          <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>วันที่เรียน</Typography>
+          <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+            วันที่เรียน
+          </Typography>
           {secInfo?.schedule.map((schedule, index) => (
-            <div key={index} style={{ marginTop: '8px', display: 'inline-flex', gap: '8px' }}>
+            <div
+              key={index}
+              style={{ marginTop: "8px", display: "inline-flex", gap: "8px" }}
+            >
               <DayChip day={schedule.day_of_week} />
             </div>
           ))}
@@ -89,22 +122,24 @@ const CourseBox = ({
                 height: "auto",
                 minWidth: "fit-content",
                 borderRadius: 4,
-                '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(0, 0, 0, 0.23)',
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "rgba(0, 0, 0, 0.23)",
                 },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(0, 0, 0, 0.42)',
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "rgba(0, 0, 0, 0.42)",
                 },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(0, 0, 0, 0.42)',
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "rgba(0, 0, 0, 0.42)",
                 },
-                '& .MuiSelect-select': {
-                  padding: '10px 12px',
+                "& .MuiSelect-select": {
+                  padding: "10px 12px",
                 },
               }}
             >
               {course.sections.map((sec, index) => (
-                <MenuItem key={index} value={index}>Sec {sec.section}</MenuItem>
+                <MenuItem key={index} value={index}>
+                  Sec {sec.section}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -115,15 +150,19 @@ const CourseBox = ({
         <Grid container spacing={2} sx={{ mt: 2 }}>
           {/* Section Info */}
           <Grid item xs={12}>
-            <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>ผู้สอน</Typography>
-            <Typography>{secInfo.instructors.join(', ')}</Typography>
+            <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+              ผู้สอน
+            </Typography>
+            <Typography>{secInfo.instructors.join(", ")}</Typography>
           </Grid>
 
           {/* Section Schedule */}
           {secInfo.schedule.map((schedule, index) => (
             <Grid key={index} container spacing={2} sx={{ paddingLeft: 2 }}>
               <Grid item xs={4}>
-                <Typography>{schedule.start_time} - {schedule.end_time}</Typography>
+                <Typography>
+                  {schedule.start_time} - {schedule.end_time}
+                </Typography>
               </Grid>
               <Grid item xs={4}>
                 <Typography>{schedule.room_name}</Typography>
@@ -141,11 +180,11 @@ const CourseBox = ({
         <Grid item>
           <Button
             variant="outlined"
-            sx={{ mr: 2, fontSize: { xs: '0.75rem', md: '1rem' } }}
+            sx={{ mr: 2, fontSize: { xs: "0.75rem", md: "1rem" } }}
             onClick={handleButtonClick}
             startIcon={courseIsSelect ? <CheckCircleIcon /> : <AddIcon />}
           >
-            {courseIsSelect ? 'ยกเลิก' : 'เลือก'}
+            {courseIsSelect ? "ยกเลิก" : "เลือก"}
           </Button>
         </Grid>
       </Grid>

@@ -25,6 +25,10 @@ export const metadata: Metadata = {
 //   () => import("../shared/components/navbar.component")
 // )
 
+const CourseBox = dynamic(
+  () => import("../shared/components/CourseBox.component")
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,8 +36,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${morKhor.variable}`}>
-        <ReduxProvider>{children}</ReduxProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${morKhor.variable}`}
+      >
+        <ReduxProvider>
+          
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
