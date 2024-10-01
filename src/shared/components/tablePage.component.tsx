@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Typography,
@@ -23,8 +23,10 @@ import {
 import styles from "./page.module.css";
 import { morKhor, poppins, Lamoon } from "../assets/fonts";
 import { Course } from "../interfaces";
-import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
-import BorderAll from "@mui/icons-material/BorderAll";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux";
+import { removeCourse } from "../slices";
+import { SelectedCourseAndSec } from "../types";
 
 const timeToPixels = (time: string) => {
   const [hours, minutes] = time.split(":").map(Number);
@@ -49,50 +51,50 @@ const getPosition = (day: string, startTime: string, endTime: string) => {
   };
 };
 
-const courseData = {
-  course_id: 3613666209,
-  academic_year: 2567,
-  semester: 1,
-  course_code: "EN001205",
-  course_name: "การพัฒนาทักษะทางวิศวกรรม",
-  course_name_english: "ENGINEERING SKILLS DEVELOPMENT",
-  faculty_name: "คณะวิศวกรรมศาสตร์",
-  department_name: "- คณะ / ไม่ระบุภาค -",
-  credits: "1 (0-3-2)",
-  prerequisite: "-",
-  sections: [
-    {
-      section: 1,
-      instructors: ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
-      midterm: "-",
-      final_exam: "-",
-      schedule: [
-        {
-          day_of_week: "MON",
-          start_time: "14:30",
-          end_time: "17:30",
-          room_name: "EN17204",
-          study_type: "L",
-        },
-      ],
-    },
-    {
-      section: 6,
-      instructors: ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
-      midterm: "-",
-      final_exam: "-",
-      schedule: [
-        {
-          day_of_week: "FRI",
-          start_time: "14:30",
-          end_time: "17:30",
-          room_name: "EN17204",
-          study_type: "L",
-        },
-      ],
-    },
-  ],
-};
+// const courseData = {
+//   course_id: 3613666209,
+//   academic_year: 2567,
+//   semester: 1,
+//   course_code: "EN001205",
+//   course_name: "การพัฒนาทักษะทางวิศวกรรม",
+//   course_name_english: "ENGINEERING SKILLS DEVELOPMENT",
+//   faculty_name: "คณะวิศวกรรมศาสตร์",
+//   department_name: "- คณะ / ไม่ระบุภาค -",
+//   credits: "1 (0-3-2)",
+//   prerequisite: "-",
+//   sections: [
+//     {
+//       section: 1,
+//       instructors: ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
+//       midterm: "-",
+//       final_exam: "-",
+//       schedule: [
+//         {
+//           day_of_week: "MON",
+//           start_time: "14:30",
+//           end_time: "17:30",
+//           room_name: "EN17204",
+//           study_type: "L",
+//         },
+//       ],
+//     },
+//     {
+//       section: 6,
+//       instructors: ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
+//       midterm: "-",
+//       final_exam: "-",
+//       schedule: [
+//         {
+//           day_of_week: "FRI",
+//           start_time: "14:30",
+//           end_time: "17:30",
+//           room_name: "EN17204",
+//           study_type: "L",
+//         },
+//       ],
+//     },
+//   ],
+// };
 
 const secNumberToSecIndex = (secNumber: number, course: Course): number => {
   if (course.sections) {
@@ -100,19 +102,27 @@ const secNumberToSecIndex = (secNumber: number, course: Course): number => {
   } else return 0;
 };
 
-export const TablePage = () => {
+const TablePage = () => {
   const [courses, setCourses] = useState<any[]>([]); // เก็บข้อมูลวิชา
-  const [selectedCourse, setSelectedCourse] = useState<any>(null); // เก็บวิชาที่เลือกสำหรับ modal
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null); // เก็บวิชาที่เลือกสำหรับ modal
+  const [selectedCourses, setSelectedCourses] = useState<
+    SelectedCourseAndSec[]
+  >([]);
   const [courseColor, setCourseColor] = useState<string>("#e3f2fd"); // สีของรายวิชาในตาราง
   const [selectedColor, setSelectedColor] = useState<string>("blue"); // กำหนดค่าสีเริ่มต้น
 
+  const dispatch = useDispatch();
+  const selectedCoursesRedux = useSelector((state: RootState) => 
+    state.courses
+  );
+
   // ฟังก์ชันสำหรับการเพิ่มวิชาในตาราง
-  const addCourse = (course: any) => {
-    setCourses([...courses, course]);
-  };
+  // const addCourse = (course: any) => {
+  //   setCourses([...courses, course]);
+  // };
 
   // ฟังก์ชันสำหรับการลบวิชา
-  const removeCourse = (course: any) => {
+  const removeCourse = (course: Course) => {
     setCourses(courses.filter((c) => c !== course));
     setSelectedCourse(null); // ปิด modal หลังลบ
   };
@@ -130,6 +140,10 @@ export const TablePage = () => {
     "#BAE1FF",
     "#D1BAFF",
   ];
+
+  // useEffect(() => {
+  //   dispatch(removeCourse(selectedCourse))
+  // }, [removeCourse])
 
   const times: string[] = [
     "Day/Time",
@@ -154,14 +168,14 @@ export const TablePage = () => {
   return (
     <Container maxWidth="lg">
       <div style={{ paddingTop: "32px" }}>
-        <Button
+        {/* <Button
           onClick={() => addCourse(courseData)}
           variant="contained"
           color="primary"
           style={{ marginBottom: "16px" }}
         >
           เพิ่มวิชา
-        </Button>
+        </Button> */}
         <div
           style={{
             display: "flex",
@@ -172,8 +186,8 @@ export const TablePage = () => {
           <Typography
             variant="h3"
             sx={{
-              fontFamily: Lamoon.style.fontFamily,
-              fontWeight: Lamoon.style.fontWeight,
+              fontFamily: morKhor.style.fontFamily,
+              fontWeight: morKhor.style.fontWeight,
             }}
           >
             จัดตารางเรียน
@@ -206,8 +220,8 @@ export const TablePage = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontFamily: Lamoon.style.fontFamily,
-                  fontWeight: Lamoon.style.fontWeight,
+                  // fontFamily: Lamoon.style.fontFamily,
+                  // fontWeight: Lamoon.style.fontWeight,
                 }}
               >
                 <Typography variant="subtitle2" color="textSecondary">
@@ -231,8 +245,8 @@ export const TablePage = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontFamily: Lamoon.style.fontFamily,
-                  fontWeight: Lamoon.style.fontWeight,
+                  // fontFamily: morKhor.style.fontFamily,
+                  // fontWeight: morKhor.style.fontWeight,
                 }}
               >
                 <Typography variant="subtitle2" color="textSecondary">
@@ -241,10 +255,15 @@ export const TablePage = () => {
               </div>
             ))}
 
-            {courses.map((course) => {
-              return course.sections[
-                secNumberToSecIndex(secNumber, course)
-              ].schedule.map((slot: any) => {
+            {selectedCoursesRedux.map((courseWithSec: SelectedCourseAndSec) => {
+
+              const course = courseWithSec.course;
+              const sectionIndex = secNumberToSecIndex(
+                courseWithSec.section,
+                course
+              );
+
+              return course.sections[sectionIndex].schedule.map((slot: any) => {
                 const position = getPosition(
                   slot.day_of_week,
                   slot.start_time,
@@ -264,8 +283,8 @@ export const TablePage = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontFamily: Lamoon.style.fontFamily,
-                      fontWeight: Lamoon.style.fontWeight,
+                      // fontFamily: Lamoon.style.fontFamily,
+                      // fontWeight: Lamoon.style.fontWeight,
                       color: "#1565c0",
                       boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                       padding: "4px",
@@ -303,8 +322,8 @@ export const TablePage = () => {
                       flexDirection={"column"}
                     >
                       <Box
-                        fontFamily={Lamoon.style.fontFamily}
-                        fontWeight={Lamoon.style.fontWeight}
+                        // fontFamily={Lamoon.style.fontFamily}
+                        // fontWeight={Lamoon.style.fontWeight}
                         fontSize={"13.5px"}
                         letterSpacing={"0.5px"}
                         lineHeight={"22.5px"}
@@ -342,7 +361,7 @@ export const TablePage = () => {
                         display={"flex"}
                         fontSize={"13.5px"}
                         fontWeight={"400"}
-                        fontFamily={Lamoon.style.fontFamily}
+                        // fontFamily={Lamoon.style.fontFamily}
                         letterSpacing={"0.5px"}
                         lineHeight={"22.5px"}
                         marginTop={"8px"}
@@ -377,7 +396,7 @@ export const TablePage = () => {
                             letterSpacing={"0.15px"}
                             lineHeight={"27px"}
                             position={"relative"}
-                            fontFamily={Lamoon.style.fontFamily}
+                            // fontFamily={Lamoon.style.fontFamily}
                           >
                             Section: {secNumber}
                           </Typography>
@@ -387,26 +406,20 @@ export const TablePage = () => {
                         <TableHead>
                           <TableRow>
                             <TableCell>
-                              <Typography fontFamily={Lamoon.style.fontFamily}>
-                                ผู้สอน
-                              </Typography>
+                              <Typography>ผู้สอน</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography fontFamily={Lamoon.style.fontFamily}>
-                                เวลา
-                              </Typography>
+                              <Typography>เวลา</Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography fontFamily={Lamoon.style.fontFamily}>
-                                ห้องเรียน
-                              </Typography>
+                              <Typography>ห้องเรียน</Typography>
                             </TableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody>
                           <TableRow>
                             <TableCell>
-                              <Typography fontFamily={Lamoon.style.fontFamily}>
+                              <Typography>
                                 {selectedCourse.sections[
                                   secNumberToSecIndex(secNumber, selectedCourse)
                                 ]?.instructors
@@ -420,7 +433,7 @@ export const TablePage = () => {
                               </Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography fontFamily={Lamoon.style.fontFamily}>
+                              <Typography>
                                 {selectedCourse.sections[
                                   secNumberToSecIndex(secNumber, selectedCourse)
                                 ].schedule
@@ -432,7 +445,7 @@ export const TablePage = () => {
                               </Typography>
                             </TableCell>
                             <TableCell>
-                              <Typography fontFamily={Lamoon.style.fontFamily}>
+                              <Typography>
                                 {selectedCourse.sections[
                                   secNumberToSecIndex(secNumber, selectedCourse)
                                 ].schedule[0]?.room_name ||
@@ -446,9 +459,7 @@ export const TablePage = () => {
                     <Box>4</Box>
                     <Box>5</Box>
                   </Box>
-                  <DialogTitle fontFamily={Lamoon.style.fontFamily}>
-                    เลือกสีในตาราง
-                  </DialogTitle>
+                  <DialogTitle>เลือกสีในตาราง</DialogTitle>
                   <DialogContent>
                     {colors.map((color) => (
                       <Button
@@ -469,23 +480,13 @@ export const TablePage = () => {
                       color="error"
                       variant="contained"
                     >
-                      <Typography
-                        fontFamily={Lamoon.style.fontFamily}
-                        fontSize={"15px"}
-                      >
-                        นำออกจากตาราง
-                      </Typography>
+                      <Typography fontSize={"15px"}>นำออกจากตาราง</Typography>
                     </Button>
                     <Button
                       onClick={() => setSelectedCourse(null)}
                       color="primary"
                     >
-                      <Typography
-                        fontFamily={Lamoon.style.fontFamily}
-                        fontSize={"15px"}
-                      >
-                        ปิด
-                      </Typography>
+                      <Typography fontSize={"15px"}>ปิด</Typography>
                     </Button>
                   </DialogActions>
                 </Container>
@@ -497,3 +498,5 @@ export const TablePage = () => {
     </Container>
   );
 };
+
+export default TablePage

@@ -27,7 +27,7 @@ export const CoursesSlice = createSlice({
       const courseIndex = state.findIndex(
         (item) => item.course.course_id === action.payload.course.course_id
       );
-      if (courseIndex) {
+      if (courseIndex !== 1) {
         state[courseIndex].section = action.payload.section;
       }
     },
