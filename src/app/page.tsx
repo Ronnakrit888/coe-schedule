@@ -19,7 +19,7 @@ export default function Home() {
     >
       <Table></Table>
       <div>
-        
+
       </div>
     </div>
   );
