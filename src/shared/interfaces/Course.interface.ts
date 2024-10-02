@@ -13,8 +13,8 @@ export interface Course {
   credits: string;
   prerequisite: string;
   sections: Section[];  // Optional, if sections are included
+  
 }
-
 export interface Color {
   color: string;
 }

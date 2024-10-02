@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add"; // Import Add icon
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; // Import CheckCircle icon
-import DayChip from "./cayChip.component";
+import DayChip from "../components/cayChip.component";
 
 type Props = {
   course: Course;
