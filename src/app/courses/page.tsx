@@ -64,13 +64,6 @@ const Page = (props: Props) => {
     []
   );
 
-  // useEffect(() => {
-  //   if (selectedCourseAndSec) {
-
-  //     dispatch(removeCourse(selectedCourseAndSec))
-  //   }
-  // }, [removeSelectedCourseAndSec])
-
   // Function to add course to selected list
   const addSelectedCourseAndSec = useCallback(
     (selectedCourseAndSec: SelectedCourseAndSec) => {
@@ -89,7 +82,6 @@ const Page = (props: Props) => {
               item.section === selectedCourseAndSec.section
           )
         ) {
-          console.log(selectedCourseAndSec);
           return [...filteredCourses, selectedCourseAndSec];
         }
         return filteredCourses;
@@ -98,24 +90,20 @@ const Page = (props: Props) => {
     []
   );
 
-
   // Dispatch addCourse เมื่อมีการ selected
   useEffect(() => {
     if (selectedCourseAndSec) {
       selectedCourseAndSec.forEach((selectedItem) => {
-        const { course, section } = selectedItem;
-        dispatch(addCourse({ course, section }));
+        dispatch(addCourse(selectedItem));
       });
     }
   }, [selectedCourseAndSec]);
 
-
   useEffect(() => {
     if (selectedCourseRedux) {
       setSelectedCourseAndSec(selectedCourseRedux);
-    } 
-
-  }, [selectedCourseRedux])
+    }
+  }, [selectedCourseRedux]);
 
   // Calculate total credits
   const totalCredits = useCallback((): number => {
@@ -125,13 +113,13 @@ const Page = (props: Props) => {
         0
       );
     }
-    return 0
-  }, [selectedCourseAndSec]);
+    return 0;
+  }, [selectedCourseRedux]);
 
   const handleSelectedCoursesDialogOpen = () => {
     setSelectedCoursesDialogOpen(true);
-    console.log(selectedCourseRedux)
   };
+
   const handleSelectedCoursesDialogClose = () => {
     setSelectedCoursesDialogOpen(false);
   };
@@ -172,15 +160,41 @@ const Page = (props: Props) => {
 
   const prevSelectedCoursesRef = useRef(selectedCourseAndSec);
 
+  // useEffect(() => {
+  //   if (selectedCourseAndSec.length !== prevSelectedCoursesRef.current.length) {
+  //     const addOrRemoveCourse =
+  //       selectedCourseAndSec.length > prevSelectedCoursesRef.current.length
+  //         ? "add"
+  //         : "remove";
+  //     handleSnackBarOpen(addOrRemoveCourse);
+  //     prevSelectedCoursesRef.current = [...selectedCourseAndSec];
+  //   }
+  // }, [selectedCourseAndSec]);
+
   useEffect(() => {
-    if (selectedCourseAndSec.length !== prevSelectedCoursesRef.current.length) {
-      const addOrRemoveCourse =
-        selectedCourseAndSec.length > prevSelectedCoursesRef.current.length
-          ? "add"
-          : "remove";
-      handleSnackBarOpen(addOrRemoveCourse);
-      prevSelectedCoursesRef.current = [...selectedCourseAndSec];
+    const prevCourses = prevSelectedCoursesRef.current;
+
+    const addedCoures = selectedCourseAndSec.filter(
+      (course) =>
+        !prevCourses.some(
+          (prev) => prev.course.course_code === course.course.course_code
+        )
+    );
+
+    const removedCoures = prevCourses.filter(
+      (course) =>
+        !selectedCourseAndSec.some(
+          (curr) => curr.course.course_code === course.course.course_code
+        )
+    );
+
+    if (addedCoures.length > 0) {
+      handleSnackBarOpen("add");
+    } else if (removedCoures.length > 0) {
+      handleSnackBarOpen("remove");
     }
+
+    prevSelectedCoursesRef.current = [...selectedCourseAndSec];
   }, [selectedCourseAndSec]);
 
   return (
