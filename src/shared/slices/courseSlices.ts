@@ -18,7 +18,7 @@ export const CoursesSlice = createSlice({
       );
       if (existingCourseIndex === -1) {
         // state.push(action.payload);
-        console.log(action.payload);
+        console.log("Course that add : ", action.payload);
         return [...state, action.payload];
       }
     },
@@ -32,10 +32,16 @@ export const CoursesSlice = createSlice({
       }
     },
 
-    removeCourse: (state, action: PayloadAction<number>) => {
+    removeCourse: (state, action: PayloadAction<CourseWithSec[]>) => {
+      const courseIdsToRemove = action.payload.map((course) => (
+        course.course.course_id
+      ))
+
+      // console.log("Course that remove : ", state)
       return state.filter(
-        (course) => course.course.course_id != action.payload
-      );
+        (course) => (!courseIdsToRemove.includes(course.course.course_id))
+        
+      )
     },
   },
 });

@@ -1,23 +1,7 @@
-// "use client"
-
-// import React from 'react'
-// import { Container, Typography } from '@mui/material'
-
-// type Props = {
-//   locale : string
-// }
-
-// export const Navbar = (props : Props) => {
-//   return (
-//     <Container maxWidth="lg">
-
-//     </Container>
-//   )
-// }
-
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import {
   AppBar,
   Toolbar,
@@ -39,6 +23,15 @@ type Props = {
 
 const Navbar = (props : Props) => {
   const { locale } = props;
+  const router = useRouter();
+
+  const handleBackToTablePage = () => {
+    router.push('/');
+  }
+
+  const handleBackToCoursePage = () => {
+    router.push('/courses');
+  }
 
   // Sample text based on locale
   const navText = locale === 'th' ? 'ตารางเรียน' : 'Schedule';
@@ -75,7 +68,7 @@ const Navbar = (props : Props) => {
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {/* Search Icon and Text */}
             <Button
-              href="/courses"
+              onClick={handleBackToCoursePage}
               color="secondary"
               sx={{
                 display: "flex",
@@ -99,7 +92,7 @@ const Navbar = (props : Props) => {
 
             {/* Schedule Icon and Text */}
             <Button
-              href="/"
+              onClick={handleBackToTablePage}
               color="secondary"
               sx={{ display: "flex", alignItems: "center" }}
             >

@@ -36,7 +36,6 @@ const Page = (props: Props) => {
     SelectedCourseAndSec[]
   >([]);
   const [snackbarMessage, setSnackbarMessage] = useState<string>("");
-  // const [fetchCourses, setFetchCourses] = useState<Course[]>([]);
   const [snackBarOpen, setSnackBarOpen] = useState<boolean>(false);
   const [selectedCoursesDialogOpen, setSelectedCoursesDialogOpen] =
     useState<boolean>(false);
@@ -99,6 +98,8 @@ const Page = (props: Props) => {
     []
   );
 
+
+  // Dispatch addCourse เมื่อมีการ selected
   useEffect(() => {
     if (selectedCourseAndSec) {
       selectedCourseAndSec.forEach((selectedItem) => {
@@ -107,6 +108,14 @@ const Page = (props: Props) => {
       });
     }
   }, [selectedCourseAndSec]);
+
+
+  useEffect(() => {
+    if (selectedCourseRedux) {
+      setSelectedCourseAndSec(selectedCourseRedux);
+    } 
+
+  }, [selectedCourseRedux])
 
   // Calculate total credits
   const totalCredits = useCallback((): number => {
@@ -121,6 +130,7 @@ const Page = (props: Props) => {
 
   const handleSelectedCoursesDialogOpen = () => {
     setSelectedCoursesDialogOpen(true);
+    console.log(selectedCourseRedux)
   };
   const handleSelectedCoursesDialogClose = () => {
     setSelectedCoursesDialogOpen(false);
