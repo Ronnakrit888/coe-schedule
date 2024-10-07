@@ -62,6 +62,7 @@ export const CourseBox = ({
       } else {
         removeSelectedCourseAndSec(selectedCourseAndSec);
       }
+
     }
   }, [
     courseIsSelect,

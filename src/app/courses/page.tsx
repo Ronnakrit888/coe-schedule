@@ -23,23 +23,38 @@ import {
   Stack,
 } from "@mui/material";
 import { addCourse, removeCourse } from "@/shared/slices";
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import axios from "axios";
+import { Course } from "@/shared/interfaces";
 
 type Props = {};
 
 const Page = (props: Props) => {
   const dispatch = useDispatch();
-  const selectedCourseRedux = useSelector((root: RootState) => {
-    root.courses;
-  });
+  const selectedCourseRedux = useSelector((root: RootState) => root.courses);
 
   const [searchCourse, setSearchCourse] = useState<string>("");
-  // const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
-
   const [selectedCourseAndSec, setSelectedCourseAndSec] = useState<
     SelectedCourseAndSec[]
   >([]);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarMessage, setSnackbarMessage] = useState<string>("");
+  // const [fetchCourses, setFetchCourses] = useState<Course[]>([]);
+  const [snackBarOpen, setSnackBarOpen] = useState<boolean>(false);
+  const [selectedCoursesDialogOpen, setSelectedCoursesDialogOpen] =
+    useState<boolean>(false);
+
+  // useEffect(() => {
+  //   const fetchCourses = async () => {
+  //     try {
+  //       const response = await axios.get('./api/courses.ts')
+  //       setFetchCourses(response.data)
+  //     } catch (error){
+  //       console.log("Error Fetching  data", error)
+  //     }
+  //   }
+
+  //   fetchCourses()
+  // }, [])
 
   const filteredCourse = useMemo(() => {
     return CourseMock.filter((course) =>
@@ -110,14 +125,15 @@ const Page = (props: Props) => {
 
   // Calculate total credits
   const totalCredits = useCallback((): number => {
-    return selectedCourseAndSec.reduce(
-      (total, item) => total + parseInt(item.course.credits),
-      0
-    );
+    if (selectedCourseRedux) {
+      return selectedCourseRedux.reduce(
+        (total, item) => total + parseInt(item.course.credits),
+        0
+      );
+    }
+    return 0
   }, [selectedCourseAndSec]);
 
-  const [selectedCoursesDialogOpen, setSelectedCoursesDialogOpen] =
-    useState<boolean>(false);
   const handleSelectedCoursesDialogOpen = () => {
     setSelectedCoursesDialogOpen(true);
   };
@@ -138,7 +154,6 @@ const Page = (props: Props) => {
     ));
   }, [filteredCourse, selectedCourseAndSec]);
 
-  const [snackBarOpen, setSnackBarOpen] = useState<boolean>(false);
   const handleSnackBarOpen = (addOrRemoveCourse: string) => {
     console.log(addOrRemoveCourse);
     if (
@@ -185,8 +200,25 @@ const Page = (props: Props) => {
             value={searchCourse}
             onChange={(e) => setSearchCourse(e.target.value)}
           />
-          <Button variant="outlined" style={{ marginLeft: "16px", position : 'relative' }}>
+          <Button
+            variant="outlined"
+            style={{ marginLeft: "16px", position: "relative" }}
+            onClick={handleSelectedCoursesDialogOpen}
+          >
             <ShoppingBasketIcon fontSize="large"></ShoppingBasketIcon>
+            <Typography
+              sx={{
+                position: "absolute",
+                top: "-5px",
+                right: "-5px",
+                backgroundColor: "yellow",
+                borderRadius: "50%",
+                padding: "2px 6px",
+                fontSize: "16px",
+              }}
+            >
+              {selectedCourseRedux.length}
+            </Typography>
           </Button>
         </Stack>
       </Stack>
@@ -227,7 +259,7 @@ const Page = (props: Props) => {
       <CoursesDialog
         open={selectedCoursesDialogOpen}
         onClose={handleSelectedCoursesDialogClose}
-        selectedCourseAndSec={selectedCourseAndSec}
+        selectedCourseAndSec={selectedCourseRedux}
         totalCredits={totalCredits()}
       />
     </main>
