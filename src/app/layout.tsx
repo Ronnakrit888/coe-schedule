@@ -5,9 +5,9 @@ import { morKhor } from "@/shared/assets/fonts";
 import { ReduxProvider } from "@/shared/providers";
 import dynamic from "next/dynamic";
 
-const Navbar = dynamic(
-  () => import("../shared/components/navbar.component")
-)
+const Navbar = dynamic(() => import("../shared/components/navbar.component"));
+
+const Footer = dynamic(() => import("../shared/components/footer.component"));
 
 // const Navbar = dynamic(
 //   () => import("../shared/components/navbar.component")
@@ -53,7 +53,10 @@ export default function RootLayout({
       >
         <ReduxProvider>
           <Navbar locale="th" />
-          {children}
+          {/* Main content */}
+          <main style={{ flex: 1 }}>{children}</main>
+          {/* Footer at the bottom */}
+          <Footer />
         </ReduxProvider>
       </body>
     </html>
