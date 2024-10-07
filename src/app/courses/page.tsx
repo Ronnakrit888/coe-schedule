@@ -20,9 +20,10 @@ import {
   SnackbarContent,
   TextField,
   Typography,
+  Stack,
 } from "@mui/material";
-import { Course } from "@/shared/interfaces";
 import { addCourse, removeCourse } from "@/shared/slices";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 type Props = {};
 
@@ -89,7 +90,7 @@ const Page = (props: Props) => {
               item.section === selectedCourseAndSec.section
           )
         ) {
-          console.log(selectedCourseAndSec)
+          console.log(selectedCourseAndSec);
           return [...filteredCourses, selectedCourseAndSec];
         }
         return filteredCourses;
@@ -174,14 +175,21 @@ const Page = (props: Props) => {
 
   return (
     <main style={{ padding: "16px" }}>
-      <TextField
-        fullWidth
-        id="outlined-basic"
-        label="ค้นหารายวิชา"
-        variant="outlined"
-        value={searchCourse}
-        onChange={(e) => setSearchCourse(e.target.value)}
-      />
+      <Stack sx={{ position: "sticky", zIndex: "1100", marginTop: "100px" }}>
+        <Stack direction="row" style={{ width: "100%", marginBottom: "16px" }}>
+          <TextField
+            fullWidth
+            id="outlined-basic"
+            label="ค้นหารายวิชา"
+            variant="outlined"
+            value={searchCourse}
+            onChange={(e) => setSearchCourse(e.target.value)}
+          />
+          <Button variant="outlined" style={{ marginLeft: "16px", position : 'relative' }}>
+            <ShoppingBasketIcon fontSize="large"></ShoppingBasketIcon>
+          </Button>
+        </Stack>
+      </Stack>
 
       {/* Conditionally render either the courses or the "ไม่พบรายวิชา" message */}
       {filteredCourse.length > 0 ? (

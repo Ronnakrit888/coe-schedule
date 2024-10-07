@@ -5,17 +5,9 @@ import { morKhor } from "@/shared/assets/fonts";
 import { ReduxProvider } from "@/shared/providers";
 import dynamic from "next/dynamic";
 
-
-const CourseBox = dynamic(
-  () => import("../shared/components/CourseBox.component")
-);
-
 const Navbar = dynamic(
   () => import("../shared/components/navbar.component")
 )
-
-const TablePage = dynamic(
-  () => import("../shared/components/tablePage.component"))
 
 // const Navbar = dynamic(
 //   () => import("../shared/components/navbar.component")

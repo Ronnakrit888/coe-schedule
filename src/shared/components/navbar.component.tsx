@@ -46,7 +46,7 @@ const Navbar = (props : Props) => {
 
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#f8f9fa", padding: "0" }}>
+    <AppBar position="fixed" sx={{ backgroundColor: "#f8f9fa", padding: "0" }}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* Logo Section */}

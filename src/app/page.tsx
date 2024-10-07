@@ -4,7 +4,13 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared/redux";
-import TablePage from "@/shared/components/tablePage.component";
+import dynamic from "next/dynamic";
+import TablePage from "@/shared/components/TablePage.component";
+import TablePageGrid from "@/shared/components/tablePageGrid";
+
+
+// const TablePage = dynamic(
+//   () => import("../shared/components/tablePage.component"))
 
 export default function Home() {
 
@@ -18,6 +24,7 @@ export default function Home() {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <TablePage></TablePage>
+      {/* <TablePageGrid></TablePageGrid> */}
     </div>
   );
 }

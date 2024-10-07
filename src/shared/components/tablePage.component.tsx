@@ -112,9 +112,7 @@ const TablePage = () => {
   const [selectedColor, setSelectedColor] = useState<string>("blue"); // กำหนดค่าสีเริ่มต้น
 
   const dispatch = useDispatch();
-  const selectedCoursesRedux = useSelector((state: RootState) => 
-    state.courses
-  );
+  const selectedCoursesRedux = useSelector((state: RootState) => state.courses);
 
   // ฟังก์ชันสำหรับการเพิ่มวิชาในตาราง
   // const addCourse = (course: any) => {
@@ -147,18 +145,18 @@ const TablePage = () => {
 
   const times: string[] = [
     "Day/Time",
-    "9:00-10.00",
-    "10:00-11.00",
-    "11:00-12.00",
-    "12:00-13.00",
-    "13:00-14.00",
-    "14:00-15.00",
-    "15:00-16.00",
-    "16:00-17.00",
-    "17:00-18.00",
-    "18:00-19.00",
-    "19:00-20.00",
-    "20:00-21.00",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
   ];
 
   const days: string[] = ["MON", "TUE", "WED", "THU", "FRI"];
@@ -196,11 +194,11 @@ const TablePage = () => {
 
         <div
           style={{
-            overflow: "scroll",
-            height: "500px",
-            backgroundColor: "#f9f9f9",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            overflowX: "scroll",
+            height: "454px",
+            // borderRadius: "16px",
+            // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            // width: "1144px",
           }}
         >
           <div style={{ width: `${44 * (times.length * 2 - 2)}px` }}></div>
@@ -215,8 +213,8 @@ const TablePage = () => {
                   top: 0,
                   width: "88px",
                   height: "54px",
-                  backgroundColor: "#fff",
-                  borderBottom: "1px solid #ddd",
+                  // backgroundColor: "#fff",
+                  // borderBottom: "1px solid #ddd",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -241,7 +239,7 @@ const TablePage = () => {
                   height: "80px",
                   width: "88px",
                   backgroundColor: "#fff",
-                  borderRight: "1px solid #ddd",
+                  // borderRight: "1px solid #ddd",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -255,8 +253,70 @@ const TablePage = () => {
               </div>
             ))}
 
-            {selectedCoursesRedux.map((courseWithSec: SelectedCourseAndSec) => {
+            {/* Create Lines */}
+            {times.map((time, timeIndex) => (
+              <span
+                key={timeIndex}
+                className={styles.line}
+                style={{
+                  left: `${-0.5 + timeIndex * 88}px`,
+                  top: "-0.5px",
+                  width: "1px",
+                  height: "454px",
+                }}
+              ></span>
+            ))}
+            <span
+              className={styles.line}
+              style={{
+                left: `${-0.5 + times.length * 88}px`,
+                top: "-0.5px",
+                width: "1px",
+                height: "454px",
+              }}
+            ></span>
 
+            <span
+              className={styles.line}
+              style={{
+                left: "-0.5px",
+                top: "0px",
+                width: "1144px",
+                height: "1px",
+              }}
+            ></span>
+            <span
+              className={styles.line}
+              style={{
+                left: "-0.5px",
+                top: "53.5px",
+                width: "1144px",
+                height: "1px",
+              }}
+            ></span>
+            {days.map((day, dayIndex) => (
+              <span
+                key={dayIndex}
+                className={styles.line}
+                style={{
+                  left: "-0.5px",
+                  top: `${53.5 + dayIndex * 80}px`,
+                  width: "1144px",
+                  height: "1px",
+                }}
+              ></span>
+            ))}
+            <span
+              className={styles.line}
+              style={{
+                left: "-0.5px",
+                top: `${53.5 + days.length * 80}px`,
+                width: "1144px",
+                height: "1px",
+              }}
+            ></span>
+
+            {selectedCoursesRedux.map((courseWithSec: SelectedCourseAndSec) => {
               const course = courseWithSec.course;
               const sectionIndex = secNumberToSecIndex(
                 courseWithSec.section,
@@ -277,14 +337,15 @@ const TablePage = () => {
                       left: `${position.left + 88}px`,
                       top: `${position.top + 54}px`,
                       width: `${position.width}px`,
-                      height: "72px",
+                      height: "79px",
                       backgroundColor: courseColor,
                       borderRadius: "4px",
                       display: "flex",
-                      alignItems: "center",
+                      flexDirection: "column",
+                      alignItems: "left",
                       justifyContent: "center",
-                      // fontFamily: Lamoon.style.fontFamily,
-                      // fontWeight: Lamoon.style.fontWeight,
+                      fontFamily: morKhor.style.fontFamily,
+                      fontWeight: morKhor.style.fontWeight,
                       color: "#1565c0",
                       boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                       padding: "4px",
@@ -293,8 +354,11 @@ const TablePage = () => {
                     }}
                     onClick={() => setSelectedCourse(course)} // แสดง modal เมื่อคลิก
                   >
-                    <Typography variant="subtitle2">
-                      {course.course_name} ({slot.room_name})
+                    <Typography className={styles.textWrap} sx={{ fontSize : '18px'}}>
+                      {course.course_name_english}
+                    </Typography>
+                    <Typography className={styles.textWrap} sx={{ fontSize : '18px'}}>
+                      {slot.room_name}
                     </Typography>
                   </div>
                 );
@@ -456,8 +520,8 @@ const TablePage = () => {
                         </TableBody>
                       </Table>
                     </Box>
-                    <Box>4</Box>
-                    <Box>5</Box>
+                    {/* <Box>4</Box>
+                    <Box>5</Box> */}
                   </Box>
                   <DialogTitle>เลือกสีในตาราง</DialogTitle>
                   <DialogContent>
@@ -499,4 +563,4 @@ const TablePage = () => {
   );
 };
 
-export default TablePage
+export default TablePage;

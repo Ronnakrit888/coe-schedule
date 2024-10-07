@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = {day : string}
 
-const DayChip = (props: Props) => {
+export const DayChip = (props: Props) => {
     const dayColor = () => {
       switch (props.day) {
         case 'MON' : return yellow

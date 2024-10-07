@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add"; // Import Add icon
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"; // Import CheckCircle icon
-import DayChip from "./cayChip.component";
+import DayChip from "./dayChip.component";
 
 type Props = {
   course: Course;
@@ -30,7 +30,7 @@ type Props = {
   ) => void;
 };
 
-const CourseBox = ({
+export const CourseBox = ({
   course,
   addSelectedCourseAndSec,
   selectedCourseAndSec,
@@ -192,4 +192,4 @@ const CourseBox = ({
   );
 };
 
-export default CourseBox;
+// export default CourseBox;

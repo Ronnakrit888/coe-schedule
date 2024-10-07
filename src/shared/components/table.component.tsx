@@ -78,18 +78,18 @@ export const Table = () => {
 
   const times: string[] = [
     "Day/Time",
-    "9:00-10.00",
-    "10:00-11.00",
-    "11:00-12.00",
-    "12:00-13.00",
-    "13:00-14.00",
-    "14:00-15.00",
-    "15:00-16.00",
-    "16:00-17.00",
-    "17:00-18.00",
-    "18:00-19.00",
-    "19:00-20.00",
-    "20:00-21.00",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
   ];
 
   const days: string[] = ["MON", "TUE", "WED", "THU", "FRI"];
@@ -126,7 +126,7 @@ export const Table = () => {
         <div
           style={{
             overflow: "scroll",
-            height: "500px",
+            height: "454px",
             backgroundColor: "#f9f9f9",
             borderRadius: "8px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

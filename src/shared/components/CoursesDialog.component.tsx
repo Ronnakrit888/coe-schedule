@@ -20,7 +20,7 @@ type Props = {
   selectedCourseAndSec: SelectedCourseAndSec[];
   totalCredits: number;
 };
-const CoursesDialog = ({
+export const CoursesDialog = ({
   open,
   onClose,
   selectedCourseAndSec,
@@ -31,6 +31,7 @@ const CoursesDialog = ({
   const handleBackToMainPage = () => {
     router.push("/"); // Safely push route only if on the client
   };
+  
   return (
     <Dialog
       open={open}
@@ -89,6 +90,7 @@ const CoursesDialog = ({
                     variant="body2"
                     fontWeight="500"
                     color="text.secondary"
+                    sx={{ display : 'flex', alignItems : 'center'}}
                   >
                     {course.course_code}
                   </Typography>
