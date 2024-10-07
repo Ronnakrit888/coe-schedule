@@ -24,8 +24,6 @@ import {
 } from "@mui/material";
 import { addCourse, removeCourse } from "@/shared/slices";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import axios from "axios";
-import { Course } from "@/shared/interfaces";
 
 type Props = {};
 
@@ -42,19 +40,6 @@ const Page = (props: Props) => {
   const [snackBarOpen, setSnackBarOpen] = useState<boolean>(false);
   const [selectedCoursesDialogOpen, setSelectedCoursesDialogOpen] =
     useState<boolean>(false);
-
-  // useEffect(() => {
-  //   const fetchCourses = async () => {
-  //     try {
-  //       const response = await axios.get('./api/courses.ts')
-  //       setFetchCourses(response.data)
-  //     } catch (error){
-  //       console.log("Error Fetching  data", error)
-  //     }
-  //   }
-
-  //   fetchCourses()
-  // }, [])
 
   const filteredCourse = useMemo(() => {
     return CourseMock.filter((course) =>
