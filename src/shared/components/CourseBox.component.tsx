@@ -25,7 +25,9 @@ type Props = {
   addSelectedCourseAndSec: (selectedCourseAndSec: SelectedCourseAndSec) => void;
   selectedCourseAndSec: SelectedCourseAndSec[];
   totalCredits: () => number;
-  removeSelectedCourseAndSec: (selectedCourseAndSec: SelectedCourseAndSec) => void;
+  removeSelectedCourseAndSec: (
+    selectedCourseAndSec: SelectedCourseAndSec
+  ) => void;
 };
 
 export const CourseBox = ({
@@ -35,8 +37,8 @@ export const CourseBox = ({
   totalCredits,
   removeSelectedCourseAndSec,
 }: Props) => {
-  const [sec, setSec] = useState<number>(0); // Default section is the first one
-  const [courseIsSelect, setCourseIsSelect] = useState<boolean>(false);
+  const [sec, setSec] = useState(0); // Default section is the first one
+  const [courseIsSelect, setCourseIsSelect] = useState(false);
 
   // Memoize section info to avoid recalculating unless `sec` changes
   const secInfo = useMemo(() => course.sections[sec], [course.sections, sec]);
@@ -53,7 +55,7 @@ export const CourseBox = ({
   // Effect for managing course selection/deselection
   useEffect(() => {
     if (secInfo) {
-      const selectedCourseAndSec = { course , section: secInfo.section, isSelected : courseIsSelect };
+      const selectedCourseAndSec = { course , section: secInfo.section };
 
       if (courseIsSelect) {
         addSelectedCourseAndSec(selectedCourseAndSec);
@@ -68,7 +70,6 @@ export const CourseBox = ({
     addSelectedCourseAndSec,
     removeSelectedCourseAndSec,
     course,
-    sec,
   ]);
 
   return (

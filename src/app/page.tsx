@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared/redux";
 import html2canvas from 'html2canvas';
 import dynamic from "next/dynamic";
-import TablePage from "@/shared/components/TablePage.component";
+import TablePage from "@/shared/components/tablePage.component";
 import TablePageGrid from "@/shared/components/tablePageGrid";
 import { Button } from "@mui/material";
 import DownloadIcon from '@mui/icons-material/Download';

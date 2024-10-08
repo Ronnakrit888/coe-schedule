@@ -8,7 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 type Props = {}
 
-const Footer = (props: Props) => {
+export const Footer = (props: Props) => {
     return (
         <Box
           component="footer"

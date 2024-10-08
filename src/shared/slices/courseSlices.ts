@@ -4,8 +4,6 @@ import { Course } from "../interfaces";
 interface CourseWithSec {
   course: Course;
   section: number;
-  isSelected : boolean;
-
 }
 
 const initialState: CourseWithSec[] = [];
@@ -34,17 +32,17 @@ export const CoursesSlice = createSlice({
       }
     },
 
-    // removeCourse: (state, action: PayloadAction<CourseWithSec>) => {
-    //   return state.filter(
-    //     (item) => item.course.course_code != action.payload.course.course_code || 
-    //   item.section != action.payload.section)
-    // },
+    removeCourse: (state, action: PayloadAction<CourseWithSec[]>) => {
+      const courseIdsToRemove = action.payload.map((course) => (
+        course.course.course_id
+      ))
 
-    removeCourse : (state) => {
-      console.log("Course removed")
-      return state.filter((item) => item.isSelected)
-    }
-    
+      // console.log("Course that remove : ", state)
+      return state.filter(
+        (course) => (!courseIdsToRemove.includes(course.course.course_id))
+        
+      )
+    },
   },
 });
 

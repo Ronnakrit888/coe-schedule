@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 
 const Navbar = dynamic(() => import("../shared/components/navbar.component"));
 
-const Footer = dynamic(() => import("../shared/components/footer.component"));
+const Footer = dynamic(() => import("../shared/components/Footer.component"));
 
 // const Navbar = dynamic(
 //   () => import("../shared/components/navbar.component")
