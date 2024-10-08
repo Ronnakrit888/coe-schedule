@@ -53,10 +53,7 @@ export default function RootLayout({
       >
         <ReduxProvider>
           <Navbar locale="th" />
-          {/* Main content */}
-          <main style={{ flex: 1 }}>{children}</main>
-          {/* Footer at the bottom */}
-          <Footer />
+          {children}
         </ReduxProvider>
       </body>
     </html>

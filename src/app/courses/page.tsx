@@ -130,7 +130,7 @@ const Page = (props: Props) => {
 
   const handleSelectedCoursesDialogOpen = () => {
     setSelectedCoursesDialogOpen(true);
-    console.log(selectedCourseRedux)
+    
   };
   const handleSelectedCoursesDialogClose = () => {
     setSelectedCoursesDialogOpen(false);
