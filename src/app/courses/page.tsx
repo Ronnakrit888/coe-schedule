@@ -212,7 +212,7 @@ const Page = (props: Props) => {
                 fontSize: "16px",
               }}
             >
-              {selectedCourseRedux.length}
+              {selectedCourseAndSec.length}
             </Typography>
           </Button>
         </Stack>

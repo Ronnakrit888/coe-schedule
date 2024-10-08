@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   Container,
   Typography,
@@ -27,6 +27,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { removeCourse } from "../slices";
 import { SelectedCourseAndSec } from "../types";
+import html2canvas from "html2canvas";
+import DownloadIcon from '@mui/icons-material/Download';
+
 
 const timeToPixels = (time: string) => {
   const [hours, minutes] = time.split(":").map(Number);
@@ -51,51 +54,6 @@ const getPosition = (day: string, startTime: string, endTime: string) => {
   };
 };
 
-// const courseData = {
-//   course_id: 3613666209,
-//   academic_year: 2567,
-//   semester: 1,
-//   course_code: "EN001205",
-//   course_name: "การพัฒนาทักษะทางวิศวกรรม",
-//   course_name_english: "ENGINEERING SKILLS DEVELOPMENT",
-//   faculty_name: "คณะวิศวกรรมศาสตร์",
-//   department_name: "- คณะ / ไม่ระบุภาค -",
-//   credits: "1 (0-3-2)",
-//   prerequisite: "-",
-//   sections: [
-//     {
-//       section: 1,
-//       instructors: ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
-//       midterm: "-",
-//       final_exam: "-",
-//       schedule: [
-//         {
-//           day_of_week: "MON",
-//           start_time: "14:30",
-//           end_time: "17:30",
-//           room_name: "EN17204",
-//           study_type: "L",
-//         },
-//       ],
-//     },
-//     {
-//       section: 6,
-//       instructors: ["ผศ.ดร.วรพงษ์ โล่ห์ไพศาลกฤช"],
-//       midterm: "-",
-//       final_exam: "-",
-//       schedule: [
-//         {
-//           day_of_week: "FRI",
-//           start_time: "14:30",
-//           end_time: "17:30",
-//           room_name: "EN17204",
-//           study_type: "L",
-//         },
-//       ],
-//     },
-//   ],
-// };
-
 const secNumberToSecIndex = (secNumber: number, course: Course): number => {
   if (course.sections) {
     return course.sections.findIndex((sec) => sec.section == secNumber);
@@ -114,10 +72,21 @@ const TablePage = () => {
   const dispatch = useDispatch();
   const selectedCoursesRedux = useSelector((state: RootState) => state.courses);
 
-  // ฟังก์ชันสำหรับการเพิ่มวิชาในตาราง
-  // const addCourse = (course: any) => {
-  //   setCourses([...courses, course]);
-  // };
+  const tablePageRef = useRef<HTMLDivElement | null>(null);
+  
+  // Function to capture the TablePage and download the image
+  const captureImage = useCallback(() => {
+    const tablePage = tablePageRef.current;
+    if (tablePage) {
+      html2canvas(tablePage).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = imgData;
+        link.download = "image.png"; // File name
+        link.click();
+      });
+    }
+  }, []);
 
   // ฟังก์ชันสำหรับการลบวิชา
   const removeCourse = (course: Course) => {
@@ -138,10 +107,6 @@ const TablePage = () => {
     "#BAE1FF",
     "#D1BAFF",
   ];
-
-  // useEffect(() => {
-  //   dispatch(removeCourse(selectedCourse))
-  // }, [removeCourse])
 
   const times: string[] = [
     "Day/Time",
@@ -165,15 +130,7 @@ const TablePage = () => {
 
   return (
     <Container maxWidth="lg">
-      <div style={{ paddingTop: "32px" }}>
-        {/* <Button
-          onClick={() => addCourse(courseData)}
-          variant="contained"
-          color="primary"
-          style={{ marginBottom: "16px" }}
-        >
-          เพิ่มวิชา
-        </Button> */}
+      <div style={{ paddingTop: "32px", marginTop : '60px' }}>
         <div
           style={{
             display: "flex",
@@ -193,6 +150,7 @@ const TablePage = () => {
         </div>
 
         <div
+          ref={tablePageRef}
           style={{
             overflowX: "scroll",
             height: "454px",
@@ -354,10 +312,16 @@ const TablePage = () => {
                     }}
                     onClick={() => setSelectedCourse(course)} // แสดง modal เมื่อคลิก
                   >
-                    <Typography className={styles.textWrap} sx={{ fontSize : '18px'}}>
+                    <Typography
+                      className={styles.textWrap}
+                      sx={{ fontSize: "18px" }}
+                    >
                       {course.course_name_english}
                     </Typography>
-                    <Typography className={styles.textWrap} sx={{ fontSize : '18px'}}>
+                    <Typography
+                      className={styles.textWrap}
+                      sx={{ fontSize: "18px" }}
+                    >
                       {slot.room_name}
                     </Typography>
                   </div>
@@ -557,6 +521,17 @@ const TablePage = () => {
               </Dialog>
             )}
           </div>
+        </div>
+        <div>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<DownloadIcon />}
+            onClick={captureImage}
+            style={{ marginTop: "20px" }}
+          >
+            PNG
+          </Button>
         </div>
       </div>
     </Container>

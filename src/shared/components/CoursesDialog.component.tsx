@@ -90,7 +90,7 @@ export const CoursesDialog = ({
                     variant="body2"
                     fontWeight="500"
                     color="text.secondary"
-                    sx={{ display : 'flex', alignItems : 'center'}}
+                    sx={{ display : 'flex', paddingLeft : '30px'}}
                   >
                     {course.course_code}
                   </Typography>
